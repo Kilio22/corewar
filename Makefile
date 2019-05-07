@@ -42,10 +42,14 @@ SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 INCL_PATH	=	$(ROOT_PATH)$(INCL_NAME)
 TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 
-ASM	=	asm
+ASM	=	asm/
 UTILS	=	utils
 
-SRC	=	$(ASM)/asm.c \
+SRC	=	$(ASM)get_comments.c	\
+		$(ASM)get_file.c	\
+		$(ASM)get_header.c	\
+		$(ASM)get_name.c	\
+		$(ASM)globals.c	\
 		$(UTILS)/get_line.c \
 		op.c
 
