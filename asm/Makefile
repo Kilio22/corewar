@@ -45,7 +45,8 @@ TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 ASM	=	asm/
 UTILS	=	utils/
 
-SRC	=	$(UTILS)delete_end_whitespaces.c \
+SRC	=	$(UTILS)cut_strings.c	\
+		$(UTILS)delete_end_whitespaces.c \
 		$(UTILS)get_line.c \
 		$(UTILS)is_empty.c \
 		$(UTILS)my_strcat_nofree.c \

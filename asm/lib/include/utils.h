@@ -17,5 +17,7 @@ char *delete_end_whitespaces(char *line);
 size_t my_quote_len(char *line);
 int is_empty_line(const char *line);
 char *delete_end_whitespaces(char *line);
+char *cut_string(char **src, size_t index);
+char *slice_string(char **src, size_t index);
 
 #endif /* !UTILS_H_ */
