@@ -15,6 +15,6 @@ token_t token_tab[ID_NUMBER] = {
     {",", ID_SEPARATOR, D_SEPARATOR},
     {":", ID_LABEL, D_GET},
     {"%", ID_DIRECT, D_GET},
-    {COMMENT_STR, ID_COMMENT, D_COMMENT},
-    {NULL, ID_WITHOUT, ID_WITHOUT}
+    {"#", ID_COMMENT, D_COMMENT},
+    {NULL, ID_NOTHING, D_WITHOUT}
 };

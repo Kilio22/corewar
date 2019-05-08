@@ -9,7 +9,7 @@
 #define INSCTRUCTION_H_
 
 enum id_delimiters {
-    ID_WITHOUT = -1,
+    ID_NOTHING,
     ID_SPACE,
     ID_TAB,
     ID_SEPARATOR,
@@ -20,6 +20,7 @@ enum id_delimiters {
 };
 
 enum delimiter_types {
+    D_WITHOUT,
     D_NORMAL,
     D_GET,
     D_SEPARATOR,
