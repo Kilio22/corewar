@@ -54,11 +54,12 @@ SRC	=	$(UTILS)cut_strings.c	\
 		$(UTILS)skip_whitespaces.c \
 		asm_globals.c \
 		create_instruction_from_line.c \
+		create_instruction.c \
 		get_file.c \
 		get_header.c \
 		load_instructions.c \
 		op.c \
-		parser_globals.c
+		parser.c
 
 SRC_LIB	=	stdio my string
 

@@ -28,7 +28,4 @@ char **get_file(const char *fp, header_t *header);
 //get_header
 int get_header(FILE *stream, header_t *header);
 
-/* CREATE INSTRUCTION */
-struct instruction **create_instruction_from_line(char *line);
-
 #endif /* !ASM_H_ */

@@ -41,4 +41,8 @@ struct label {
     struct label *next;
 };
 
+struct instruction *create_instruction(void);
+struct instruction *create_instruction_from_line(char *line);
+struct instruction **load_instructions(char **file);
+
 #endif /* !INSCTRUCTION_H_ */

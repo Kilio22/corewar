@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include "parser.h"
 #include "op.h"
+#include "my_string.h"
 
 token_t token_tab[ID_NUMBER] = {
     {" ", ID_SPACE, D_NORMAL},
@@ -18,3 +19,11 @@ token_t token_tab[ID_NUMBER] = {
     {"#", ID_COMMENT, D_COMMENT},
     {NULL, ID_NOTHING, D_WITHOUT}
 };
+
+int find_token_index(char *ptr)
+{
+    for (int i = 0; token_tab[i].delim; i++)
+        if (!my_strncmp(ptr, token_tab[i].delim, my_strlen(token_tab[i].delim)))
+            return i;
+    return -1;
+}

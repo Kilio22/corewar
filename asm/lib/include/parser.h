@@ -11,12 +11,13 @@
 #include "insctruction.h"
 
 typedef struct token {
-    char *delimit;
+    char *delim;
     short id;
     short type;
 } token_t;
 
 extern token_t token_tab[ID_NUMBER];
+int find_token_index(char *ptr);
 
 #define GET_TOKEN_ID(n) (token_tab[n].id)
 #define GET_TOKEN_TYPE(n) (token_tab[n].type)

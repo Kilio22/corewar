@@ -16,7 +16,7 @@ static struct instruction **realloc_instruction_list(struct instruction **list,
 
     if (!new_list)
         return NULL;
-    for (;list[i]; i++)
+    for (; list[i]; i++)
         new_list[i] = list[i];
     new_list[i++] = new;
     new_list[i] = NULL;
@@ -24,7 +24,7 @@ static struct instruction **realloc_instruction_list(struct instruction **list,
     return new_list;
 }
 
-struct instruction **load_instruction(char **file)
+struct instruction **load_instructions(char **file)
 {
     struct instruction **list = malloc(sizeof(struct instruction *));
     struct instruction *new;
