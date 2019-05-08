@@ -1,0 +1,24 @@
+#
+# zork.s for corewar
+#
+# Bob Bylan
+#
+# Sat Nov 10 03:24;30 2081
+#
+
+.name "zork"
+.comment "just a basic living prog"
+
+l2:
+sti r1, %:1, %1
+and r1, %0, r1
+1: live %1
+zjmp %:live
+
+instruction_tab[] = {
+    "l2"[ID_WITHOUT] -> ":"[ID_LABEL]
+    "sti"[ID_WITHOUT] -> "r1"[ID_WITHOUT] -> ","[ID_SEPARATOR] -> "%:live"[ID_DIRECT] -> ","[ID_SEPARATOR] -> "%1"[ID_DIRECT]
+    "and"[ID_WITHOUT] -> "r1"[ID_WITHOUT] -> ","[ID_SEPARATOR] -> "%0"[ID_DIRECT] -> ","[ID_SEPARATOR] -> "r1"[ID_WITHOUT]
+    "live"[ID_WITHOUT] -> ":"[ID_LABEL] -> "live"[ID_WITHOUT] -> "%1"[ID_DIRECT]
+    "zjmp"[ID_WITHOUT] -> "%:live"[ID_DIRECT]
+};

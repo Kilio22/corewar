@@ -1,0 +1,43 @@
+/*
+** EPITECH PROJECT, 2019
+** CPE_corewar_2018
+** File description:
+** insctruction
+*/
+
+#ifndef INSCTRUCTION_H_
+#define INSCTRUCTION_H_
+
+enum id_delimiters {
+    ID_WITHOUT = -1,
+    ID_SPACE,
+    ID_TAB,
+    ID_SEPARATOR,
+    ID_COMMENT,
+    ID_LABEL,
+    ID_DIRECT,
+    ID_NUMBER
+};
+
+enum delimiter_types {
+    D_NORMAL,
+    D_GET,
+    D_SEPARATOR,
+    D_COMMENT,
+    D_NUMBER
+};
+
+struct instruction {
+    char *instruction;
+    short id;
+    short type;
+    struct instruction *next;
+};
+
+struct label {
+    char *name;
+    size_t offset;
+    struct label *next;
+};
+
+#endif /* !INSCTRUCTION_H_ */
