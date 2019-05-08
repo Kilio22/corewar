@@ -19,6 +19,7 @@
 #define DIRECT_CHAR '%'
 #define SEPARATOR_CHAR ','
 
+#define COMMENT_STR ((char [2]) {COMMENT_CHAR, '\0'})
 #define LABEL_CHARS "abcdefghijklmnopqrstuvwxyz_0123456789"
 
 #define NAME_CMD_STRING ".name"

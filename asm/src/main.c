@@ -16,6 +16,8 @@ int main(int argc, char const *argv[])
 
     if (argc != 2)
         return 84;
+    for (int i = 0; i < ID_NUMBER - 1; i++)
+        printf("|%s|\n", token_tab[i].delimit);
     file = get_file(argv[1], &header);
     if (!file)
         return 84;

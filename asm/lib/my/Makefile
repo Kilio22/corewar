@@ -48,7 +48,7 @@ SRC	=	free_em.c \
 SRCS	=	$(SRC:%=$(SRC_PATH)/%)
 OBJ	=	$(SRCS:.c=.o)
 
-CFLAGS	=	-Wall -Wextra -Werror -I $(INCLUDE_PATH)
+CFLAGS	=	-W -Wall -Wextra -Werror -I $(INCLUDE_PATH)
 DEBUG_FLAGS	=	-g3 -gdwarf-4
 
 all:	$(NAME)

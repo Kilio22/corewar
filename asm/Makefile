@@ -45,16 +45,19 @@ TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 ASM	=	asm/
 UTILS	=	utils/
 
-SRC	=	$(ASM)asm_globals.c \
-		$(ASM)get_header.c	\
-		$(ASM)get_file.c \
-		$(UTILS)delete_end_whitespaces.c \
+SRC	=	$(UTILS)delete_end_whitespaces.c \
 		$(UTILS)get_line.c \
-		$(UTILS)is_empty.c	\
+		$(UTILS)is_empty.c \
 		$(UTILS)my_strcat_nofree.c \
 		$(UTILS)quote_len.c	\
 		$(UTILS)skip_whitespaces.c \
-		op.c
+		asm_globals.c \
+		create_instruction_from_line.c \
+		get_file.c \
+		get_header.c \
+		load_instructions.c \
+		op.c \
+		parser_globals.c
 
 SRC_LIB	=	stdio my string
 
@@ -65,7 +68,7 @@ OBJ	=	$(SRCS:.c=.o)
 LIBRARIES	=	$(SRC_LIB:%=-l%)
 LIB_PATHS_FLAG	=	$(LIB_PATHS:%=-L$(ROOT_PATH)%)
 
-CFLAGS	=	-Wall -Wextra -Werror -I $(INCL_PATH)
+CFLAGS	=	-W -Wall -Wextra -Werror -I $(INCL_PATH)
 LDFLAGS	=	$(LIB_PATHS_FLAG) $(LIBRARIES)
 DEBUG_FLAGS	=	-g3 -gdwarf-4
 
