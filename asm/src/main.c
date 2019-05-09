@@ -25,12 +25,12 @@ int main(int argc, char const *argv[])
     printf("%s\n", header.comment);
     list = load_instructions(file);
     save = list;
-    /* for (int i = 0; list[i]; i++) {
+    for (int i = 0; list[i]; i++) {
         while (list[i]) {
             printf("%s %d %d\n", list[i]->instruction, list[i]->id, list[i]->type);
             list[i] = list[i]->next;
         }
-    } */
+    }
     if (check_syntax_loop(save) == 84)
         return 84;
     my_free_fields(file);
