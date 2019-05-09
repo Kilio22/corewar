@@ -64,8 +64,7 @@ int check_syntax(struct instruction *instruction)
             return 0;
         if (check_instruction(instruction) == 84)
             return 84;
-    }
-    else
+    } else
         return check_instruction(instruction);
     return 0;
 }
