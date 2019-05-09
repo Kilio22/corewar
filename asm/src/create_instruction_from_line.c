@@ -67,6 +67,8 @@ struct instruction *create_instruction_from_line(char *line)
             continue;
         if (add_instruction(inst, &line, t_index, i) == -1)
             return NULL;
+        if (GET_TOKEN_TYPE(t_index) == D_COMMENT)
+            return inst;
         i = -1;
     }
     if (*line && add_instruction(inst, &line, t_index, my_strlen(line)) == -1)
