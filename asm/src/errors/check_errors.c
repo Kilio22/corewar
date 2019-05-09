@@ -56,7 +56,8 @@ int check_syntax(struct instruction *instruction)
 {
     if (!instruction || !instruction->next)
         return 84;
-    if (instruction->next->id == ID_LABEL) {
+    if (instruction->id == ID_LABEL && instruction->type == D_WITHOUT
+&& instruction->next->id == ID_LABEL) {
         if (check_labels(instruction) == 84)
             return 84;
         instruction = instruction->next->next;
@@ -72,7 +73,7 @@ int check_syntax(struct instruction *instruction)
 int check_syntax_loop(struct instruction **instruction)
 {
     for (size_t i = 0; instruction[i]; i++) {
-        if (instruction[i]->id != ID_NOTHING)
+        if (instruction[i]->type != D_WITHOUT)
             return 84;
         if (check_syntax(instruction[i]) == 84)
             return 84;
