@@ -22,8 +22,12 @@ token_t token_tab[ID_NUMBER] = {
 
 int find_token_index(char *ptr)
 {
-    for (int i = 0; token_tab[i].delim; i++)
+    size_t i = 0;
+
+    while (token_tab[i].delim) {
         if (!my_strncmp(ptr, token_tab[i].delim, my_strlen(token_tab[i].delim)))
-            return i;
-    return -1;
+            break;
+        i++;
+    }
+    return i;
 }
