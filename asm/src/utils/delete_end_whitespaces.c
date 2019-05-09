@@ -11,7 +11,7 @@ char *delete_end_whitespaces(char *line)
 {
     size_t i = my_strlen(line) - 1;
 
-    for (; i > 0; i--) {
+    for (; i > 0 && *line; i--) {
         if (!my_strchr((char *) whitespace_chars, line[i]))
             return line;
         line[i] = '\0';

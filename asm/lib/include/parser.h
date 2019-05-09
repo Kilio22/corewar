@@ -18,6 +18,7 @@ typedef struct token {
 
 extern token_t token_tab[ID_NUMBER];
 int find_token_index(char *ptr);
+int check_syntax_loop(struct instruction **instruction);
 
 #define GET_TOKEN_ID(n) (token_tab[n].id)
 #define GET_TOKEN_TYPE(n) (token_tab[n].type)
