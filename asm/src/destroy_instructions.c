@@ -8,21 +8,21 @@
 #include <stdlib.h>
 #include "asm.h"
 
-void destroy_instruction(struct instruction *inst)
+void destroy_instruction(struct instruction *head)
 {
-    struct instruction *head = inst;
+    struct instruction *next = head;
 
     while (head) {
-        inst = inst->next;
+        next = next->next;
         free(head->instruction);
         free(head);
-        head = inst;
+        head = next;
     }
 }
 
 void destroy_instruction_list(struct instruction **list)
 {
-    for (struct instruction *ptr = *list; ptr; ptr++)
-        destroy_instruction(ptr);
+    for (struct instruction **ptr = list; *ptr; ptr++)
+        destroy_instruction(*ptr);
     free(list);
 }
