@@ -10,7 +10,7 @@
 static int check_next(struct instruction **instruction, int *type)
 {
     if (!(*instruction)->next)
-            return 0;
+        return 0;
     if ((*type) == T_DIR && (*instruction)->next->id == ID_LABEL)
         (*instruction) = (*instruction)->next->next;
     else if (((*type) == T_DIR && (*instruction)->next->id != ID_LABEL)

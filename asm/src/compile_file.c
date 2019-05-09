@@ -32,7 +32,7 @@ static int write_short(int fd, struct instruction *inst, struct label *head,
     if (inst->id == ID_DIRECT)
         inst = inst->next;
     if (inst->id == ID_LABEL)
-        tmp = find_label(head, inst->next->instruction)->offset - offset; 
+        tmp = find_label(head, inst->next->instruction)->offset - offset;
     else
         tmp = my_atoi(inst->instruction);
     if (tmp < SHRT_MIN || tmp > SHRT_MAX)

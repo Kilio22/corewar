@@ -21,7 +21,7 @@ static int add_node(struct instruction *inst, char *str_inst, short id)
     } else {
         last->next = create_instruction();
         if (!last->next)
-           return -1;
+            return -1;
         last = last->next;
         last->instruction = str_inst;
         last->id = GET_TOKEN_ID(t_index);

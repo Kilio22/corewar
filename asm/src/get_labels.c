@@ -10,7 +10,7 @@
 static void shift_instructions(struct instruction **list)
 {
     struct instruction *ptr;
-    
+
     for (size_t i = 1; list[i]; i++) {
         ptr = list[i - 1];
         list[i - 1] = list[i];
@@ -39,7 +39,7 @@ static int check_if_label(struct instruction **inst, struct label **head,
 {
     struct instruction *ptr = *inst;
     int n = 2;
-    
+
     if ((*inst)->id != ID_LABEL)
         return 0;
     if (add_label(head, (*inst)->instruction, offset) == -1)

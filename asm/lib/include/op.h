@@ -35,14 +35,6 @@ enum parameter_types {
     T_IND = 4,
     T_LAB = 8
 };
-/* register */
-
-/* direct  (ld  #1,r1  put 1 into r1) */
-
-/* indirect always relative ( ld 1,r1 put what's in the address (1+pc)
-into r1 (4 bytes )) */
-
-/* LABEL */
 
 struct op_s {
     char *mnemonique;
