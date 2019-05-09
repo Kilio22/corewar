@@ -46,25 +46,25 @@ ASM	=	asm/
 ERRORS	=	errors/
 UTILS	=	utils/
 
-SRC	=	$(ERRORS)check_errors.c	\
-		$(ERRORS)is_t_dir.c	\
-		$(ERRORS)is_t_ind.c	\
-		$(ERRORS)is_t_reg.c	\
-		$(ERRORS)my_checks.c	\
-		$(UTILS)cut_strings.c	\
-		$(UTILS)delete_end_whitespaces.c \
-		$(UTILS)get_line.c \
-		$(UTILS)is_empty.c \
-		$(UTILS)my_strcat_nofree.c \
-		$(UTILS)quote_len.c	\
-		$(UTILS)skip_whitespaces.c \
-		asm_globals.c \
-		create_instruction_from_line.c \
-		create_instruction.c \
-		get_file.c \
-		get_header.c \
-		load_instructions.c \
-		op.c \
+SRC	=	$(ERRORS)check_errors.c				\
+		$(ERRORS)is_t_dir.c					\
+		$(ERRORS)is_t_ind.c					\
+		$(ERRORS)is_t_reg.c					\
+		$(ERRORS)my_checks.c				\
+		$(UTILS)cut_strings.c				\
+		$(UTILS)delete_end_whitespaces.c 	\
+		$(UTILS)get_line.c 					\
+		$(UTILS)is_empty.c 					\
+		$(UTILS)my_strcat_nofree.c 			\
+		$(UTILS)quote_len.c					\
+		$(UTILS)skip_whitespaces.c 			\
+		asm_globals.c 						\
+		create_instruction_from_line.c 		\
+		create_instruction.c 				\
+		get_file.c 							\
+		get_header.c 						\
+		load_instructions.c 				\
+		op.c 								\
 		parser.c
 
 SRC_LIB	=	stdio my string
