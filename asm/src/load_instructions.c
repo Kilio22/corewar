@@ -34,8 +34,10 @@ struct instruction **load_instructions(char **file)
     *list = NULL;
     for (size_t i = 0; file[i]; i++) {
         new = create_instruction_from_line(file[i]);
-        if (!new)
+        if (!new) {
+            destroy_instruction_list(list);
             return NULL;
+        }
         list = realloc_instruction_list(list, new);
         if (!list)
             return NULL;
