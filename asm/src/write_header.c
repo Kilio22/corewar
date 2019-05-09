@@ -15,7 +15,7 @@ int write_header(const int fd, const header_t *header)
 
     if (!header)
         return -1;
-    n_write = write(fd, &header, sizeof(header_t));
+    n_write = write(fd, header, sizeof(header_t));
     if (n_write != sizeof(header_t))
         return -1;
     return 0;

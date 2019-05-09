@@ -29,11 +29,13 @@ static void get_full_file(FILE *stream, char ***new)
 
 char **get_file(const char *fp, header_t *header)
 {
-    char **new = malloc(sizeof(char *) * 1);
+    char **new = malloc(sizeof(char *));
     FILE *stream = fopen(fp, "r");
 
-    if (!stream || !new)
+    if (!stream || !new) {
+        free(new);
         return NULL;
+    }
     new[0] = NULL;
     if (get_header(stream, header) == -1) {
         fclose(stream);

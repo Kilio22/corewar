@@ -37,17 +37,25 @@ struct instruction {
 
 struct label {
     char *name;
-    size_t offset;
+    int offset;
     struct label *next;
 };
 
-/* CREATE */
+/* INSTRUCTIONS */
+/* Create */
 struct instruction *create_instruction(void);
 struct instruction *create_instruction_from_line(char *line);
 struct instruction **load_instructions(char **file);
-
-/* DESTROY */
+/* Destroy */
 void destroy_instruction(struct instruction *inst);
 void destroy_instruction_list(struct instruction **list);
+
+/* LABELS */
+/* Create */
+struct label *create_label(char *name, int offset);
+int get_labels(struct instruction **list, struct label **head);
+struct label *find_label(struct label *head, const char *name);
+/* Destroy */
+void destroy_labels(struct label *head);
 
 #endif /* !INSCTRUCTION_H_ */

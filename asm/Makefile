@@ -47,6 +47,7 @@ ERRORS	=	errors/
 UTILS	=	utils/
 
 SRC	=	$(ERRORS)check_errors.c				\
+		$(ERRORS)check_labels.c				\
 		$(ERRORS)is_t_dir.c					\
 		$(ERRORS)is_t_ind.c					\
 		$(ERRORS)is_t_reg.c					\
@@ -57,18 +58,28 @@ SRC	=	$(ERRORS)check_errors.c				\
 		$(UTILS)get_line.c					\
 		$(UTILS)is_empty.c					\
 		$(UTILS)my_strcat_nofree.c			\
+		$(UTILS)op_needs_args.c				\
 		$(UTILS)quote_len.c					\
-		$(UTILS)skip_whitespaces.c			\
-		asm_globals.c						\
-		create_instruction_from_line.c		\
-		create_instruction.c				\
+		$(UTILS)shift_inst.c 				\
+		$(UTILS)skip_whitespaces.c 			\
+		asm_globals.c 						\
+		coding_bytes.c						\
+		compile_file.c						\
+		count_instruction_bytes.c	 		\
+		create_instruction_from_line.c 		\
+		create_instruction.c 				\
+		create_label.c 						\
 		destroy_instructions.c				\
-		get_file.c							\
-		get_header.c						\
-		load_instructions.c				\
-		op.c						\
-		write_header.c			\
-		parser.c
+		destroy_labels.c					\
+		find_label.c						\
+		get_file.c 							\
+		get_header.c 						\
+		get_labels.c 						\
+		get_parameters_size.c				\
+		load_instructions.c 				\
+		op.c 								\
+		parser.c							\
+		write_header.c
 
 SRC_LIB	=	stdio my string
 

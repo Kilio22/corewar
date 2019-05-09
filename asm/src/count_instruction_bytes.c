@@ -7,16 +7,7 @@
 
 #include "asm.h"
 
-static struct instruction *shift_inst(struct instruction *inst)
-{
-    while (inst && inst->id != ID_SEPARATOR)
-        inst = inst->next;
-    if (inst)
-        inst = inst->next;
-    return inst;
-}
-
-static int check_index_need(int index)
+int check_index_need(int index)
 {
     if (index >= 8 && index <= 11)
         return 1;
@@ -28,7 +19,7 @@ int count_instruction_bytes(struct instruction *inst)
     int size = 2;
     int index = check_instruction_occurences(inst->instruction);
 
-    if (op_tab[index].nbr_args == 1)
+    if (!op_needs_args(index))
         --size;
     inst = inst->next;
     for (int i = 0; i < op_tab[index].nbr_args; i++) {

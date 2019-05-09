@@ -26,5 +26,3 @@ const op_t op_tab[] = {
     {"aff", 1, {T_REG}, 16, 2, "aff"},
     {0, 0, {0}, 0, 0, 0}
 };
-
-// les instructions qui prennent des indexes en paramètres codent les T_DIR en T_IND (??? tfuck)

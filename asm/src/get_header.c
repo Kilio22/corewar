@@ -65,11 +65,6 @@ static int geter_head(char *line, char *save, header_t *header, size_t *i)
     return 0;
 }
 
-static void put_header_values(header_t *header)
-{
-    header->magic = COREWAR_EXEC_MAGIC;
-}
-
 int get_header(FILE *stream, header_t *header)
 {
     char *line = get_line(stream);
@@ -86,10 +81,9 @@ int get_header(FILE *stream, header_t *header)
         if (geter_head(line, save, header, &i) == -1)
             return -1;
         if (i >= 2)
-            return 0;
+            break;
         line = get_line(stream);
         save = line;
     }
-    put_header_values(header);
     return 0;
 }

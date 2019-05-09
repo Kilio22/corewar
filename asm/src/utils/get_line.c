@@ -17,8 +17,7 @@ char *get_line(FILE *f_stream)
 
     n_read = getline(&line, &n, f_stream);
     if (n_read == -1) {
-        if (line)
-            free(line);
+        free(line);
         return NULL;
     }
     if (line[n_read - 1] == '\n')
