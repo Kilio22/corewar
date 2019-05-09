@@ -7,13 +7,6 @@
 
 #include "asm.h"
 
-static struct instruction *get_last_node(struct instruction *head)
-{
-    while (head->next)
-        head = head->next;
-    return head;
-}
-
 static int add_node(struct instruction *inst, char *str_inst)
 {
     struct instruction *last = get_last_node(inst);
@@ -28,8 +21,8 @@ static int add_node(struct instruction *inst, char *str_inst)
         last = last->next;
         last->instruction = str_inst;
     }
-    last->type = t_index == -1 ? D_WITHOUT : GET_TOKEN_TYPE(t_index);
-    last->id = t_index == -1 ? ID_NOTHING : GET_TOKEN_ID(t_index);
+    last->type = GET_TOKEN_TYPE(t_index);
+    last->id = GET_TOKEN_ID(t_index);
     return 0;
 }
 
@@ -63,10 +56,12 @@ struct instruction *create_instruction_from_line(char *line)
         return NULL;
     for (size_t i = 0; line[i]; i++) {
         t_index = find_token_index(line + i);
-        if (t_index == -1)
+        if (GET_TOKEN_ID(t_index) == ID_NOTHING)
             continue;
-        if (add_instruction(inst, &line, t_index, i) == -1)
+        if (add_instruction(inst, &line, t_index, i) == -1) {
+            destroy_instruction(inst);
             return NULL;
+        }
         if (GET_TOKEN_TYPE(t_index) == D_COMMENT)
             return inst;
         i = -1;

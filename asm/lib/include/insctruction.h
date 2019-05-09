@@ -41,8 +41,13 @@ struct label {
     struct label *next;
 };
 
+/* CREATE */
 struct instruction *create_instruction(void);
 struct instruction *create_instruction_from_line(char *line);
 struct instruction **load_instructions(char **file);
+
+/* DESTROY */
+void destroy_instruction(struct instruction *inst);
+void destroy_instruction_list(struct instruction **list);
 
 #endif /* !INSCTRUCTION_H_ */

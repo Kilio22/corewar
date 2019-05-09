@@ -53,6 +53,7 @@ SRC	=	$(ERRORS)check_errors.c				\
 		$(ERRORS)my_checks.c				\
 		$(UTILS)cut_strings.c				\
 		$(UTILS)delete_end_whitespaces.c 	\
+		$(UTILS)get_last_node.c				\
 		$(UTILS)get_line.c 					\
 		$(UTILS)is_empty.c 					\
 		$(UTILS)my_strcat_nofree.c 			\
@@ -61,6 +62,7 @@ SRC	=	$(ERRORS)check_errors.c				\
 		asm_globals.c 						\
 		create_instruction_from_line.c 		\
 		create_instruction.c 				\
+		destroy_instructions.c				\
 		get_file.c 							\
 		get_header.c 						\
 		load_instructions.c 				\

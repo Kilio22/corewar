@@ -19,5 +19,6 @@ int is_empty_line(const char *line);
 char *delete_end_whitespaces(char *line);
 char *cut_string(char **src, size_t index);
 char *slice_string(char **src, size_t index);
+struct instruction *get_last_node(struct instruction *head);
 
 #endif /* !UTILS_H_ */

@@ -13,8 +13,7 @@ int main(int argc, char const *argv[])
 {
     char **file = NULL;
     header_t header;
-    struct instruction **list = NULL;
-    struct instruction **save = NULL;
+    struct instruction **list;
 
     if (argc != 2)
         return 84;
@@ -24,15 +23,23 @@ int main(int argc, char const *argv[])
     printf("%s\n", header.prog_name);
     printf("%s\n", header.comment);
     list = load_instructions(file);
-    save = list;
+    if (!list) {
+        my_free_fields(file);
+        return 84;
+    }
     for (int i = 0; list[i]; i++) {
-        while (list[i]) {
-            printf("%s %d %d\n", list[i]->instruction, list[i]->id, list[i]->type);
-            list[i] = list[i]->next;
+        struct instruction *tmp = list[i];
+        while (tmp) {
+            printf("%s %d %d\n", tmp->instruction, tmp->id, tmp->type);
+            tmp = tmp->next;
         }
     }
-    if (check_syntax_loop(save) == 84)
+    if (check_syntax_loop(list) == 84) {
+        destroy_instruction_list(list);
+        my_free_fields(file);
         return 84;
+    }
+    destroy_instruction_list(list);
     my_free_fields(file);
     return 0;
 }
