@@ -14,11 +14,11 @@ static void get_full_file(FILE *stream, char ***new)
 
     while ((line = get_line(stream)) != NULL) {
         save = line;
+        line = skip_whitespaces(line);
         if (!line[0] || line[0] == '#' || !is_empty_line(line)) {
-            free(line);
+            free(save);
             continue;
         }
-        line = skip_whitespaces(line);
         line = delete_end_whitespaces(line);
         *new = my_realloc_array(*new, line);
         if (!(*new))

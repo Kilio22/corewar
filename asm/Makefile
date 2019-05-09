@@ -43,9 +43,15 @@ INCL_PATH	=	$(ROOT_PATH)$(INCL_NAME)
 TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 
 ASM	=	asm/
+ERRORS	=	errors/
 UTILS	=	utils/
 
-SRC	=	$(UTILS)cut_strings.c	\
+SRC	=	$(ERRORS)check_errors.c	\
+		$(ERRORS)is_t_dir.c	\
+		$(ERRORS)is_t_ind.c	\
+		$(ERRORS)is_t_reg.c	\
+		$(ERRORS)my_checks.c	\
+		$(UTILS)cut_strings.c	\
 		$(UTILS)delete_end_whitespaces.c \
 		$(UTILS)get_line.c \
 		$(UTILS)is_empty.c \
