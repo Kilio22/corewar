@@ -22,6 +22,9 @@
 
 int launch_asm(char *filepath);
 
+//write_header
+int write_header(const int fd, const header_t *header);
+
 //get_file
 char **get_file(const char *fp, header_t *header);
 
