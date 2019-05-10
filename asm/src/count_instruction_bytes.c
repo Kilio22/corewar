@@ -11,6 +11,8 @@ int check_index_need(int index)
 {
     if (index >= 8 && index <= 11)
         return 1;
+    if (index >= 13 && index <= 14)
+        return 1;
     return 0;
 }
 
