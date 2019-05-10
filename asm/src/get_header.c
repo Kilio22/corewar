@@ -65,6 +65,12 @@ static int geter_head(char *line, char *save, header_t *header, size_t *i)
     return 0;
 }
 
+static char *read_next_line(char **line, FILE *stream)
+{
+    *line = get_line(stream);
+    return *line;
+}
+
 int get_header(FILE *stream, header_t *header)
 {
     char *line = get_line(stream);
@@ -74,16 +80,16 @@ int get_header(FILE *stream, header_t *header)
     while (line) {
         if (line[0] == '#' || !is_empty_line(line)) {
             free(save);
-            line = get_line(stream);
-            save = line;
+            save = read_next_line(&line, stream);
             continue;
         }
         if (geter_head(line, save, header, &i) == -1)
             return -1;
         if (i >= 2)
             break;
-        line = get_line(stream);
-        save = line;
+        save = read_next_line(&line, stream);
     }
+    if (i < 2)
+        return -1;
     return 0;
 }
