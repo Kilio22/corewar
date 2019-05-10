@@ -18,6 +18,8 @@ char **my_realloc_array(char **array, char *new)
     for (size_t i = 0; i < len; i++)
         new_array[i] = array[i];
     new_array[len] = my_strdup(new);
+    if (!new_array[len])
+        return NULL;
     new_array[len + 1] = NULL;
     free(array);
     return (new_array);
