@@ -37,12 +37,16 @@ static int add_instruction(struct instruction *inst, char **line, int t_index,
 
     if (GET_TOKEN_TYPE(t_index) == D_NORMAL) {
         str_inst = slice_string(line, i);
+        if (!str_inst)
+            return -1;
         if (my_strlen(str_inst) == 0) {
             free(str_inst);
             return 0;
         }
     } else
         str_inst = cut_string(line, i);
+    if (!str_inst)
+        return -1;
     if (my_strlen(str_inst) == 0) {
         free(str_inst);
         str_inst = my_strndup(*line, 1);
