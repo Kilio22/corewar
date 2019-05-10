@@ -42,7 +42,7 @@ SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 INCL_PATH	=	$(ROOT_PATH)$(INCL_NAME)
 TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 
-SRC	=	
+SRC	=	op.c
 
 SRC_LIB	=	stdio my string
 
