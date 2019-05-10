@@ -53,7 +53,7 @@ OBJ	=	$(SRCS:.c=.o)
 LIBRARIES	=	$(SRC_LIB:%=-l%)
 LIB_PATHS_FLAG	=	$(LIB_PATHS:%=-L$(ROOT_PATH)%)
 
-CFLAGS	=	-Wall -Wextra -Werror -I $(INCL_PATH)
+CFLAGS	=	-W -Wall -Wextra -Werror -I $(INCL_PATH)
 LDFLAGS	=	$(LIB_PATHS_FLAG) $(LIBRARIES)
 DEBUG_FLAGS	=	-g3 -gdwarf-4
 
@@ -64,11 +64,11 @@ all:	build_libs $(NAME)
 
 message:
 	@$(LINE_RETURN)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)" ____        _ _     _  "$(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| __ ) _   _(_) | __| | "$(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"|  _ \| | | | | |/ _\` |"$(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |_) | |_| | | | (_| | "$(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"|____/ \__,_|_|_|\__,_| "$(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"  ____                                  "$(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)" / ___|___  _ __ _____      ____ _ _ __ "$(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |   / _ \| '__/ _ \ \ /\ / / _\` | '__|"$(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |__| (_) | | |  __/\ V  V / (_| | |   "$(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)" \____\___/|_|  \___| \_/\_/ \__,_|_|   "$(DEFAULT)
 	@$(LINE_RETURN)
 
 $(NAME): $(OBJ)

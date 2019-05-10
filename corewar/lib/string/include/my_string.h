@@ -41,4 +41,6 @@ char **my_str_towordarray(char *src, const char *delim);
 int my_strcasecmp(const char *s1, const char *s2);
 int my_strncasecmp(const char *s1, const char *s2, size_t n);
 
+#define STR_EQ(s1, s2) !my_strcmp(s1, s2)
+
 #endif /* !MY_STRING_H_ */

@@ -135,4 +135,8 @@ flycheck_*.el
 .vscode
 unit_test*
 vgcore*
+corewar_binaries
+*.s
+*.cor
+asm
 corewar

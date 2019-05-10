@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2018
 ** my_free_fields.c
 ** File description:
-** Frees fields off a char**
+** Frees fields off a char **
 */
 
 #include <stdlib.h>

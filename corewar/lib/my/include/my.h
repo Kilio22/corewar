@@ -16,7 +16,7 @@ void my_free_fields(char **array);
 int my_intlen(int nb);
 char *my_itoa(int nb);
 char **my_remove_ptr_fromarray(char **array, char *ptr);
-char **my_realloc_array(char **array);
+char **my_realloc_array(char **array, char *new);
 char *my_revstr(char *str);
 char *my_str_addchar(char const *str, char const c, int index);
 int my_str_ends_with(const char *str, const char *end);
