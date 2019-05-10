@@ -5,9 +5,10 @@
 ** get_file
 */
 
+#include <errno.h>
 #include "asm.h"
 
-static void get_full_file(FILE *stream, char ***new)
+static int get_full_file(FILE *stream, char ***new)
 {
     char *line = NULL;
     char *save = NULL;
@@ -22,9 +23,12 @@ static void get_full_file(FILE *stream, char ***new)
         line = delete_end_whitespaces(line);
         *new = my_realloc_array(*new, line);
         if (!(*new))
-            return;
+            return -1;
         free(save);
     }
+    if (errno == ENOMEM)
+        return -1;
+    return 0;
 }
 
 char **get_file(const char *fp, header_t *header)
@@ -42,7 +46,8 @@ char **get_file(const char *fp, header_t *header)
         my_free_fields(new);
         return NULL;
     }
-    get_full_file(stream, &new);
+    if (get_full_file(stream, &new) == -1)
+        return NULL;
     fclose(stream);
     return new;
 }

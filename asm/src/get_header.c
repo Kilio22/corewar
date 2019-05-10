@@ -5,6 +5,7 @@
 ** get_header
 */
 
+#include <errno.h>
 #include "asm.h"
 
 static int get_comment(char *line, header_t *header)
@@ -89,7 +90,7 @@ int get_header(FILE *stream, header_t *header)
             break;
         save = read_next_line(&line, stream);
     }
-    if (i < 2)
+    if (i < 2 || errno == ENOMEM)
         return -1;
     return 0;
 }
