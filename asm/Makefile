@@ -52,7 +52,6 @@ SRC	=	$(ERRORS)check_errors.c				\
 		$(ERRORS)is_t_ind.c					\
 		$(ERRORS)is_t_reg.c					\
 		$(ERRORS)my_checks.c				\
-		$(UTILS)cut_strings.c				\
 		$(UTILS)delete_end_whitespaces.c	\
 		$(UTILS)get_last_node.c				\
 		$(UTILS)get_line.c					\
@@ -62,6 +61,7 @@ SRC	=	$(ERRORS)check_errors.c				\
 		$(UTILS)quote_len.c					\
 		$(UTILS)shift_inst.c 				\
 		$(UTILS)skip_whitespaces.c 			\
+		$(UTILS)strings_utils.c				\
 		asm_globals.c 						\
 		coding_bytes.c						\
 		compile_file.c						\
