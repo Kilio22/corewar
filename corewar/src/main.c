@@ -5,6 +5,8 @@
 ** main
 */
 
+#include "corewar.h"
+
 static int corewar_main(void)
 {
     return 0;
