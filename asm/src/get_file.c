@@ -44,9 +44,5 @@ char **get_file(const char *fp, header_t *header)
     }
     get_full_file(stream, &new);
     fclose(stream);
-    if (my_strarraylen(new) < 1) {
-        my_free_fields(new);
-        return NULL;
-    }
     return new;
 }
