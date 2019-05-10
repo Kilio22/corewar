@@ -14,5 +14,6 @@
 #include "my.h"
 #include "my_stdio.h"
 #include "my_string.h"
+#include "champions.h"
 
 #endif /* !COREWAR_H_ */
