@@ -26,18 +26,14 @@ static int write_char(int fd, char *str)
 static int write_short(int fd, struct instruction *inst, struct label *head,
                         int offset)
 {
-    int tmp;
     short byte;
 
     if (inst->id == ID_DIRECT)
         inst = inst->next;
     if (inst->id == ID_LABEL)
-        tmp = find_label(head, inst->next->instruction)->offset - offset;
+        byte = find_label(head, inst->next->instruction)->offset - offset;
     else
-        tmp = my_atoi(inst->instruction);
-    if (tmp < SHRT_MIN || tmp > SHRT_MAX)
-        return -1;
-    byte = tmp;
+        byte = my_atoi(inst->instruction);
     byte = htobe16(byte);
     if (write(fd, &byte, sizeof(short)) != sizeof(short))
         return -1;
