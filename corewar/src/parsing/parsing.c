@@ -39,6 +39,16 @@ static int init_parsing(parsing_t *parsing)
     return 0;
 }
 
+static int find_nb_champ(parsing_t *parsing)
+{
+    for (int i = 0; i < 4; i++)
+        if (parsing->nb_used[i] == -1) {
+            parsing->nb_used[i] = 1;
+            return i + 1;
+        }
+    return -1;
+}
+
 int parse_args(int ac, char const *argv[], parsing_t *parsing)
 {
     int current_champ = 0;
@@ -52,8 +62,11 @@ int parse_args(int ac, char const *argv[], parsing_t *parsing)
             return -1;
     if (my_arraylen((void **)parsing->params) > 4)
         return -1;
-    for (int i = 0; parsing->params[i]; i++)
+    for (int i = 0; parsing->params[i]; i++) {
+        if (parsing->params[i]->nb == -1)
+            parsing->params[i]->nb = find_nb_champ(parsing);
         if (!parsing->params[i]->fp)
             return -1;
+    }
     return 0;
 }
