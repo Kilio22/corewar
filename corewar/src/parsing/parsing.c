@@ -60,7 +60,8 @@ int parse_args(int ac, char const *argv[], parsing_t *parsing)
     for (size_t i = 1; argv[i]; i++)
         if (manage_params(argv, parsing, &i, &current_champ) == -1)
             return -1;
-    if (my_arraylen((void **)parsing->params) > 4)
+    if (my_arraylen((void **)parsing->params) > 4
+|| my_arraylen((void **)parsing->params) < 2)
         return -1;
     for (int i = 0; parsing->params[i]; i++) {
         if (parsing->params[i]->nb == -1)
