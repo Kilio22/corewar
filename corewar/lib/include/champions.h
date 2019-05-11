@@ -22,16 +22,4 @@ typedef struct champion {
     int fd;
 } champion_t;
 
-typedef struct champion_params {
-    char *fp;
-    int nb;
-    int adress;
-} champion_params_t;
-
-typedef struct parsing {
-    int dump;
-    int nb_used[4];
-    champion_params_t **params;
-} parsing_t;
-
 #endif /* !CHAMPIONS_H_ */
