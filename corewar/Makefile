@@ -45,6 +45,7 @@ PARSING_PATH	=	parsing/
 
 SRC	=	$(PARSING_PATH)destroy_parsing.c	\
 		$(PARSING_PATH)manage_parsing_fcts.c	\
+		$(PARSING_PATH)parsing_globals.c	\
 		$(PARSING_PATH)parsing.c	\
 		globals_vm.c	\
 		op.c	\
