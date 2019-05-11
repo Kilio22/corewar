@@ -16,7 +16,7 @@ typedef struct champion_params {
 
 typedef struct parsing {
     int dump;
-    int nb_used[4];
+    int nb_used[MAX_CHAMPIONS];
     champion_params_t **params;
 } parsing_t;
 
