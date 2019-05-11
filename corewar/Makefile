@@ -50,11 +50,11 @@ SRC	=	$(INIT_ARENA)/create_arena.c \
 		$(INIT_ARENA)/create_champion.c \
 		$(PARSING_PATH)/destroy_parsing.c \
 		$(PARSING_PATH)/manage_parsing_fcts.c \
+		$(PARSING_PATH)parsing_globals.c \
 		$(PARSING_PATH)/parsing.c \
 		globals_vm.c \
 		op.c \
 		utils.c
-
 
 SRC_LIB	=	stdio my string
 
