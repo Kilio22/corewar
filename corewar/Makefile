@@ -41,8 +41,14 @@ INCL_NAME	=	include
 SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 INCL_PATH	=	$(ROOT_PATH)$(INCL_NAME)
 TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
+PARSING_PATH	=	parsing/
 
-SRC	=	op.c
+SRC	=	$(PARSING_PATH)destroy_parsing.c	\
+		$(PARSING_PATH)manage_parsing_fcts.c	\
+		$(PARSING_PATH)parsing.c	\
+		globals_vm.c	\
+		op.c	\
+		utils.c
 
 SRC_LIB	=	stdio my string
 
