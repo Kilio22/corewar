@@ -41,14 +41,20 @@ INCL_NAME	=	include
 SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 INCL_PATH	=	$(ROOT_PATH)$(INCL_NAME)
 TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
-PARSING_PATH	=	parsing/
 
-SRC	=	$(PARSING_PATH)destroy_parsing.c	\
-		$(PARSING_PATH)manage_parsing_fcts.c	\
-		$(PARSING_PATH)parsing.c	\
-		globals_vm.c	\
-		op.c	\
+PARSING_PATH	=	parsing
+INIT_ARENA	=	init_arena
+
+SRC	=	$(INIT_ARENA)/create_arena.c \
+		$(INIT_ARENA)/create_champion_list.c \
+		$(INIT_ARENA)/create_champion.c \
+		$(PARSING_PATH)/destroy_parsing.c \
+		$(PARSING_PATH)/manage_parsing_fcts.c \
+		$(PARSING_PATH)/parsing.c \
+		globals_vm.c \
+		op.c \
 		utils.c
+
 
 SRC_LIB	=	stdio my string
 
