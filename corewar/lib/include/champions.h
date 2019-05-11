@@ -10,13 +10,16 @@
 
 #include "op.h"
 
+#define MAX_CHAMPIONS 4
+
 typedef struct champion {
     char prog_name[PROG_NAME_LENGTH + 1];
-    char *bytecode;
+    char *beginning;
     int prog_size;
     int reg[REG_NUMBER];
     int pc;
     int carry;
-} chamption_t;
+    int fd;
+} champion_t;
 
 #endif /* !CHAMPIONS_H_ */
