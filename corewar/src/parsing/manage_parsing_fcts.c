@@ -14,6 +14,8 @@ int add_champ(char const *fp, parsing_t *parsing, int *current)
         parsing->params = realloc_params(parsing->params);
     if (!parsing->params)
         return -1;
+    if (!my_str_ends_with(fp, ".cor"))
+        return -1;
     parsing->params[*current]->fp = my_strdup(fp);
     if (!parsing->params[*current]->fp)
         return -1;
