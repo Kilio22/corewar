@@ -5,10 +5,12 @@
 ** main
 */
 
+#include <fcntl.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "corewar.h"
 
-static void print_params(parsing_t *parsing)
+/* static void print_params(parsing_t *parsing)
 {
     for (int i = 0; parsing->params[i]; i++) {
         my_printf("------NEW-----\n");
@@ -16,12 +18,12 @@ static void print_params(parsing_t *parsing)
         my_printf("Adress: %d\n", parsing->params[i]->adress);
         my_printf("Nb champ: %d\n", parsing->params[i]->nb);
     }
-}
+} */
 
 static int corewar_main(int ac, char const *argv[])
 {
     parsing_t parsing;
-    champion_t *champions[MAX_CHAMPIONS + 1] = {0, 0, 0, 0, 0};
+    //champion_t *champions[MAX_CHAMPIONS + 1] = {0, 0, 0, 0, 0};
 
     if (parse_args(ac, argv, &parsing) == -1) {
         destroy_args(&parsing);
