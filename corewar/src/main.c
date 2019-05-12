@@ -42,6 +42,8 @@ static int corewar_main(int ac, char const *argv[])
         printf("Adress = %d\n", champions[i]->pc);
         printf("Size = %d\n", champions[i]->prog_size);
     }
+    if (check_overlap(champions) == 84)
+        return 84;
     destroy_champions(champions);
     destroy_args(&parsing);
     return n_return;
