@@ -36,9 +36,10 @@ champion_t *create_champion(const char *champ_path)
         return NULL;
     my_strcpy(champ->prog_name, header.prog_name);
     champ->prog_size = header.prog_size;
+    champ->prog_start = NULL;
     for (size_t i = 0; i < REG_NUMBER; i++)
         champ->reg[i] = 0;
-    champ->beginning = NULL;
+    champ->cycles_until_death = CYCLE_TO_DIE;
     champ->pc = 0;
     champ->carry = 0;
     champ->fd = fd;
