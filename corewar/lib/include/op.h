@@ -70,6 +70,7 @@ typedef struct header_s {
 
 /* live */
 
+#define MAX_CHAMPIONS 4
 /* number of cycle before being declared dead */
 #define CYCLE_TO_DIE 1536
 #define CYCLE_DELTA 5
