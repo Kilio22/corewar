@@ -8,6 +8,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <endian.h>
 #include "corewar.h"
 
 int read_header(header_t *header, const char *champ_path)
@@ -18,7 +19,7 @@ int read_header(header_t *header, const char *champ_path)
         return -1;
     if (read(fd, header, sizeof(header_t)) != sizeof(header_t))
         return -1;
-    if (header->magic != COREWAR_EXEC_MAGIC)
+    if (be32toh(header->magic) != COREWAR_EXEC_MAGIC)
         return -1;
     return fd;
 }
@@ -35,7 +36,7 @@ champion_t *create_champion(const char *champ_path)
     if (!champ)
         return NULL;
     my_strcpy(champ->prog_name, header.prog_name);
-    champ->prog_size = header.prog_size;
+    champ->prog_size = be32toh(header.prog_size);
     champ->prog_start = NULL;
     for (size_t i = 0; i < REG_NUMBER; i++)
         champ->reg[i] = 0;
