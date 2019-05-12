@@ -29,6 +29,14 @@ void destroy_champions(champion_t **champions);
 void sort_champions(champion_t **champions, int flag);
 int choose_adresses(champion_t **champions);
 int check_overlap(champion_t **champions);
+size_t count_bytecodes(champion_t **champions);
+int count_choosen_adresses(champion_t **champions);
+void find_lowest_block(champion_t **champions, int biggest[2]);
+void find_biggest_block(champion_t **champions, int biggest[2]);
+int fill_empty(champion_t **champions);
+int fill_one_choose(champion_t **champions);
+int fill_multiple_choose(champion_t **champions);
+int fill_two_v_two(champion_t **champions);
 
 #define LEN_CHAMP(n) champions[my_arraylen((void **)champions) - n]->prog_size
 #define CHAMP_PC(n) champions[my_arraylen((void **)champions) - n]->pc
