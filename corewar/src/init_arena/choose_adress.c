@@ -70,16 +70,16 @@ static void find_biggest_block(champion_t **champions, int biggest[2])
     for (; champions[start]->pc == -1; start++);
     for (int i = start; champions[i + 1]; i++) {
         end = champions[i]->pc + champions[i]->prog_size;
-        if (end + champions[i + 1]->pc > biggest[1]) {
-            biggest[1] = end + champions[i + 1]->pc;
+        if (champions[i + 1]->pc - end > biggest[1]) {
+            biggest[1] = champions[i + 1]->pc - end;
             biggest[0] = end;
         }
     }
     for (; champions[start + 1]; start++);
     end = champions[start]->pc + champions[start]->prog_size;
     for (start = 0; champions[start]->pc == -1; start++);
-    if ((MEM_SIZE - end + champions[start]->pc) > biggest[1]) {
-        biggest[1] = MEM_SIZE - end + champions[start]->pc;
+    if ((end - MEM_SIZE) > biggest[1]) {
+        biggest[1] = end - MEM_SIZE;
         biggest[0] = end;
     }
 }
@@ -96,15 +96,15 @@ static void find_lowest_block(champion_t **champions, int biggest[2])
     biggest[0] = end;
     for (int i = start; champions[i + 1]; i++) {
         end = champions[i]->pc + champions[i]->prog_size;
-        if (end + champions[i + 1]->pc < biggest[1]) {
-            biggest[1] = end + champions[i + 1]->pc;
+        if (champions[i + 1]->pc - end < biggest[1]) {
+            biggest[1] = champions[i + 1]->pc - end;
             biggest[0] = end;
         }
     }
     for (; champions[start + 1]; start++);
     end = champions[start]->pc + champions[start]->prog_size;
     for (start = 0; champions[start]->pc == -1; start++);
-    if ((MEM_SIZE - end + champions[start]->pc) < biggest[1]) {
+    if (end - MEM_SIZE < biggest[1]) {
         biggest[1] = MEM_SIZE - end + champions[start]->pc;
         biggest[0] = end;
     }
@@ -137,9 +137,9 @@ static int fill_two_v_two(champion_t **champions)
     find_lowest_block(champions, lowest_block);
     new = biggest_block[1] - LEN_CHAMP(1);
     if (new >= lowest_block[1]) {
-        offset = (biggest_block[1] - LEN_CHAMP(2) + LEN_CHAMP(1)) / 2;
-        CHAMP_PC(3) = biggest_block[0];
-        CHAMP_PC(4) = CHAMP_PC(1) + offset;
+        offset = (biggest_block[1] - (LEN_CHAMP(2) + LEN_CHAMP(1))) / 2;
+        CHAMP_PC(3) = biggest_block[0] + offset;
+        CHAMP_PC(4) = CHAMP_PC(3) + LEN_CHAMP(3) + offset;
     } else {
         CHAMP_PC(3) = biggest_block[0] +
 ((biggest_block[1] - LEN_CHAMP(1)) / 2);
@@ -148,6 +148,28 @@ static int fill_two_v_two(champion_t **champions)
         find_biggest_block(champions, biggest_block);
         CHAMP_PC(4) = biggest_block[0] +
 ((biggest_block[1] - LEN_CHAMP(2)) / 2);
+    }
+    return 0;
+}
+
+int check_overlap(champion_t **champions)
+{
+    int start = 0;
+
+    for (int i = 0; champions[i]; i++) {
+        start = champions[i]->pc;
+        for (int j = 0; champions[j]; j++) {
+            if (j == i)
+                continue;
+            if (champions[j]->pc + champions[j]->prog_size > MEM_SIZE) {
+                if (start >= champions[j]->pc && start <= MEM_SIZE)
+                    return 84;
+                else if (start >= 0 && start <= (champions[j]->pc + champions[j]->prog_size - MEM_SIZE))
+                    return 84;
+            }
+            else if (start >= champions[j]->pc && start <= (champions[j]->pc + champions[j]->prog_size))
+                return 84;
+        }
     }
     return 0;
 }
