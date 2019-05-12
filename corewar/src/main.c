@@ -32,6 +32,15 @@ static int corewar_main(int ac, char const *argv[])
     }
     print_params(&parsing);
     n_return = init_champions(champions, &parsing);
+    if (!n_return)
+        n_return = choose_adresses(champions);
+    for (int i = 0; champions[i]; i++) {
+        printf("------NEW------\n");
+        printf("Name = %s\n", champions[i]->prog_name);
+        printf("Id = %d\n", champions[i]->prog_id);
+        printf("Adress = %d\n", champions[i]->pc);
+        printf("Size = %d\n", champions[i]->prog_size);
+    }
     destroy_champions(champions);
     destroy_args(&parsing);
     return n_return;
