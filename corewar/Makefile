@@ -45,9 +45,11 @@ TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 INIT_ARENA_PATH	=	init_arena/
 PARSING_PATH	=	parsing/
 
-SRC	=	$(INIT_ARENA_PATH)create_arena.c \
+SRC	=	$(INIT_ARENA_PATH)choose_adress.c	\
+		$(INIT_ARENA_PATH)create_arena.c \
 		$(INIT_ARENA_PATH)create_champion.c \
 		$(INIT_ARENA_PATH)init_champion_list.c \
+		$(INIT_ARENA_PATH)sort_champions.c	\
 		$(PARSING_PATH)destroy_parsing.c \
 		$(PARSING_PATH)manage_parsing_fcts.c \
 		$(PARSING_PATH)parsing_globals.c \
