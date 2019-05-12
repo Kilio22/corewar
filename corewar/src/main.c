@@ -36,11 +36,11 @@ static int corewar_main(int ac, char const *argv[])
         n_return = choose_adresses(champions);
     sort_champions(champions, 0);
     for (int i = 0; champions[i]; i++) {
-        printf("------NEW------\n");
-        printf("Name = %s\n", champions[i]->prog_name);
-        printf("Id = %d\n", champions[i]->prog_id);
-        printf("Adress = %d\n", champions[i]->pc);
-        printf("Size = %d\n", champions[i]->prog_size);
+        my_printf("------NEW------\n");
+        my_printf("Name = %s\n", champions[i]->prog_name);
+        my_printf("Id = %d\n", champions[i]->prog_id);
+        my_printf("Adress = %d\n", champions[i]->pc);
+        my_printf("Size = %d\n", champions[i]->prog_size);
     }
     if (check_overlap(champions) == 84)
         return 84;
