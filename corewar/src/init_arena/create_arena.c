@@ -6,19 +6,39 @@
 */
 
 #include <unistd.h>
+#include <stdlib.h>
 #include "corewar.h"
 
-// char *create_arena(champion_t *champions[MAX_CHAMPIONS + 1])
-// {
-//     char *arena = malloc(sizeof(char) * MEM_SIZE);
+static int put_bytecode_at_adress(char *arena, int fd, int address, int size)
+{
+    char buf[size + 1];
+    char *ptr = buf;
+    ssize_t n_read = read(fd, buf, size);
 
-//     if (!arena)
-//         return NULL;
-//     for (int i = 0; champions[i]; i++) {
-//         if (read(champions[i]->fd, champions[i]->beginning,
-// champions[i]->prog_size) != champions[i]->prog_size) {
-//             free
-//         }
-//     }
-//     return arena;
-// }
+    if (n_read != size)
+        return -1;
+    for (int i = address; size--; i++) {
+        if (i >= MEM_SIZE)
+            i %= MEM_SIZE;
+        arena[i] = *ptr++;
+    }
+    return 0;
+}
+
+char *create_arena(champion_t **champions)
+{
+    char *arena = malloc(sizeof(char) * MEM_SIZE);
+    int n_return;
+
+    if (!arena)
+        return NULL;
+    my_memset(arena, '\0', MEM_SIZE);
+    for (int i = 0; champions[i]; i++) {
+        n_return = put_bytecode_at_adress(arena, champions[i]->fd,
+champions[i]->pc, champions[i]->prog_size);
+        if (n_return == -1)
+            return free(arena), NULL;
+        champions[i]->prog_start = arena + champions[i]->pc;
+    }
+    return arena;
+}
