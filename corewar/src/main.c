@@ -34,6 +34,7 @@ static int corewar_main(int ac, char const *argv[])
     n_return = init_champions(champions, &parsing);
     if (!n_return)
         n_return = choose_adresses(champions);
+    sort_champions(champions, 0);
     for (int i = 0; champions[i]; i++) {
         printf("------NEW------\n");
         printf("Name = %s\n", champions[i]->prog_name);
