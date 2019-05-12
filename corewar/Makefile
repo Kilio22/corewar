@@ -52,6 +52,7 @@ SRC	=	$(INIT_ARENA_PATH)create_arena.c \
 		$(PARSING_PATH)manage_parsing_fcts.c \
 		$(PARSING_PATH)parsing_globals.c \
 		$(PARSING_PATH)parsing.c \
+		destroy_champions.c \
 		op.c \
 		utils.c
 
