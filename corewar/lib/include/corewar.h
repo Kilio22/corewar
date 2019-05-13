@@ -19,6 +19,8 @@
 
 typedef struct champion champion_t;
 
+void print_params(parsing_t *parsing);
+void print_champions(champion_t **champions);
 char *create_arena(champion_t **champions);
 int loop_corewar(champion_t **champions, int dump);
 void dump_arena(char *arena);

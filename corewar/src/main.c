@@ -10,25 +10,32 @@
 #include <unistd.h>
 #include "corewar.h"
 
-static void print_params(parsing_t *parsing)
+static void destroy_corewar(champion_t **champions, parsing_t *parsing)
 {
-    for (int i = 0; parsing->params[i]; i++) {
-        my_printf("------NEW-----\n");
-        my_printf("Fp: %s\n", parsing->params[i]->fp);
-        my_printf("Adress: %d\n", parsing->params[i]->adress);
-        my_printf("Nb champ: %d\n", parsing->params[i]->nb);
-    }
+    destroy_args(parsing);
+    destroy_champions(champions);
 }
 
-static void print_champions(champion_t **champions)
+static int init_corewar(champion_t **champions, parsing_t *parsing, int ac,
+char const *av[])
 {
-    for (int i = 0; champions[i]; i++) {
-        printf("------NEW------\n");
-        printf("Name = %s\n", champions[i]->prog_name);
-        printf("Id = %d\n", champions[i]->prog_id);
-        printf("Adress = %d\n", champions[i]->pc);
-        printf("Size = %d\n", champions[i]->prog_size);
+    if (parse_args(ac, av, parsing) == -1) {
+        destroy_corewar(champions, parsing);
+        return 84;
     }
+    print_params(parsing);
+    if (init_champions(champions, parsing) ||
+choose_adresses(champions) == 84) {
+        destroy_corewar(champions, parsing);
+        return 84;
+    }
+    sort_champions(champions, 0);
+    print_champions(champions);
+    if (check_overlap(champions) == 84) {
+        destroy_corewar(champions, parsing);
+        return 84;
+    }
+    return 0;
 }
 
 static int corewar_main(int ac, char const *argv[])
@@ -37,21 +44,9 @@ static int corewar_main(int ac, char const *argv[])
     champion_t *champions[MAX_CHAMPIONS + 1] = {0, 0, 0, 0, 0};
     int n_return = 0;
 
-    if (parse_args(ac, argv, &parsing) == -1) {
-        destroy_args(&parsing);
+    if (init_corewar(champions, &parsing, ac, argv) == 84)
         return 84;
-    }
-    print_params(&parsing);
-    n_return = init_champions(champions, &parsing);
-    print_champions(champions);
-    if (!n_return)
-        n_return = choose_adresses(champions);
-    sort_champions(champions, 0);
-    print_champions(champions);
-    if (check_overlap(champions) == 84)
-        return 84;
-    if (!n_return)
-        n_return = loop_corewar(champions, parsing.dump);
+    loop_corewar(champions, parsing.dump);
     destroy_champions(champions);
     destroy_args(&parsing);
     return n_return;
