@@ -20,10 +20,10 @@ void print_params(parsing_t *parsing)
 void print_champions(champion_t **champions)
 {
     for (int i = 0; champions[i]; i++) {
-        printf("------NEW------\n");
-        printf("Name = %s\n", champions[i]->prog_name);
-        printf("Id = %d\n", champions[i]->prog_id);
-        printf("Adress = %d\n", champions[i]->pc);
-        printf("Size = %d\n", champions[i]->prog_size);
+        my_printf("------NEW------\n");
+        my_printf("Name = %s\n", champions[i]->prog_name);
+        my_printf("Id = %d\n", champions[i]->prog_id);
+        my_printf("Adress = %d\n", champions[i]->pc);
+        my_printf("Size = %d\n", champions[i]->prog_size);
     }
 }
