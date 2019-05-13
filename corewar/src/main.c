@@ -20,6 +20,17 @@ static void print_params(parsing_t *parsing)
     }
 }
 
+static void print_champions(champion_t **champions)
+{
+    for (int i = 0; champions[i]; i++) {
+        printf("------NEW------\n");
+        printf("Name = %s\n", champions[i]->prog_name);
+        printf("Id = %d\n", champions[i]->prog_id);
+        printf("Adress = %d\n", champions[i]->pc);
+        printf("Size = %d\n", champions[i]->prog_size);
+    }
+}
+
 static int corewar_main(int ac, char const *argv[])
 {
     parsing_t parsing;
@@ -32,18 +43,15 @@ static int corewar_main(int ac, char const *argv[])
     }
     print_params(&parsing);
     n_return = init_champions(champions, &parsing);
+    print_champions(champions);
     if (!n_return)
         n_return = choose_adresses(champions);
     sort_champions(champions, 0);
-    for (int i = 0; champions[i]; i++) {
-        my_printf("------NEW------\n");
-        my_printf("Name = %s\n", champions[i]->prog_name);
-        my_printf("Id = %d\n", champions[i]->prog_id);
-        my_printf("Adress = %d\n", champions[i]->pc);
-        my_printf("Size = %d\n", champions[i]->prog_size);
-    }
+    print_champions(champions);
     if (check_overlap(champions) == 84)
         return 84;
+    if (!n_return)
+        n_return = loop_corewar(champions, parsing.dump);
     destroy_champions(champions);
     destroy_args(&parsing);
     return n_return;
