@@ -26,8 +26,6 @@ size_t count_bytecodes(champion_t **champions)
     return nb_bytes;
 }
 
-#define ABS(n) ((n < 0) ? (-n) : (n))
-
 void find_biggest_block(champion_t **champions, int biggest[2])
 {
     int end = 0;
