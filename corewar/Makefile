@@ -58,6 +58,7 @@ SRC	=	$(INIT_ARENA_PATH)check_overlap.c	\
 		$(PARSING_PATH)parsing_globals.c \
 		$(PARSING_PATH)parsing.c \
 		corewar_loop.c \
+		debug_print.c	\
 		destroy_champions.c \
 		dump_arena.c \
 		op.c \
