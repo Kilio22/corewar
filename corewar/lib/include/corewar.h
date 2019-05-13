@@ -17,4 +17,10 @@
 #include "parsing.h"
 #include "champions.h"
 
+typedef struct champion champion_t;
+
+char *create_arena(champion_t **champions);
+int loop_corewar(champion_t **champions, int dump);
+void dump_arena(char *arena);
+
 #endif /* !COREWAR_H_ */
