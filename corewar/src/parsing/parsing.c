@@ -53,10 +53,10 @@ int parse_args(int ac, char const *argv[], parsing_t *parsing)
 {
     int current_champ = 0;
 
-    if (ac < 2)
-        return -1;
     if (init_parsing(parsing) == -1)
         return 84;
+    if (ac < 2)
+        return -1;
     for (size_t i = 1; argv[i]; i++)
         if (manage_params(argv, parsing, &i, &current_champ) == -1)
             return -1;
