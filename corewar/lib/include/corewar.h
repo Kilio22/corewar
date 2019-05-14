@@ -24,5 +24,8 @@ void print_champions(champion_t **champions);
 char *create_arena(champion_t **champions);
 int loop_corewar(champion_t **champions, int dump);
 void dump_arena(char *arena);
+void display_winning_champions(champion_t **champions);
+bool is_game_ended(champion_t **champions);
+void update_champions_live_status(champion_t **champions);
 
 #endif /* !COREWAR_H_ */
