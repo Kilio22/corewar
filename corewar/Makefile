@@ -44,6 +44,7 @@ TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 
 INIT_ARENA_PATH	=	init_arena/
 PARSING_PATH	=	parsing/
+INSTRUC_PATH	=	instruction/
 
 SRC	=	$(INIT_ARENA_PATH)check_overlap.c	\
 		$(INIT_ARENA_PATH)choose_adress_utils.c	\
@@ -57,6 +58,11 @@ SRC	=	$(INIT_ARENA_PATH)check_overlap.c	\
 		$(PARSING_PATH)manage_parsing_fcts.c \
 		$(PARSING_PATH)parsing_globals.c \
 		$(PARSING_PATH)parsing.c \
+		$(INSTRUC_PATH)tools/check_type.c	\
+		$(INSTRUC_PATH)tools/carry.c	\
+		$(INSTRUC_PATH)inst_ld.c	\
+		$(INSTRUC_PATH)inst_st.c	\
+		$(INSTRUC_PATH)inst_add.c	\
 		corewar_loop.c \
 		destroy_champions.c \
 		dump_arena.c \
