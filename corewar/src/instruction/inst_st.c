@@ -18,6 +18,5 @@ int inst_st(champion_t *champ, char *arena, code_t desc, int *args)
         champ->reg[args[1] - 1] = val;
     else
         write_arg(arena, (champ->pc + (args[1] % IDX_MOD)) % MEM_SIZE, val);
-    refresh_carry(champ, val);
     return 0;
 }
