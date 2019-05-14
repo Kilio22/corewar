@@ -16,6 +16,7 @@
 #include "my_string.h"
 #include "parsing.h"
 #include "champions.h"
+#include "instructions.h"
 
 typedef struct champion champion_t;
 
