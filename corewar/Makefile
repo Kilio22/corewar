@@ -68,9 +68,13 @@ SRC	=	$(INIT_ARENA_PATH)check_overlap.c	\
 		$(INSTRUC_PATH)inst_and.c	\
 		$(INSTRUC_PATH)inst_or.c	\
 		$(INSTRUC_PATH)inst_xor.c	\
+		check_param_bytecode.c \
 		corewar_loop.c \
+		count_inst_byte.c \
+		debug_print.c \
 		destroy_champions.c \
 		dump_arena.c \
+		is_game_ended.c \
 		op.c \
 		utils.c
 

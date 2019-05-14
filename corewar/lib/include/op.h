@@ -28,6 +28,7 @@
 #define REG_NUMBER 16
 
 typedef char args_type_t;
+typedef unsigned char code_t;
 
 enum parameter_types {
     T_REG = 1,
@@ -36,16 +37,37 @@ enum parameter_types {
     T_LAB = 8
 };
 
+typedef struct champion champion_t;
+
 struct op_s {
     char *mnemonique;
     char nbr_args;
     args_type_t type[MAX_ARGS_NUMBER];
     char code;
     int nbr_cycles;
-    char *comment;
+    int (*inst)(champion_t *, char *, code_t, int *);
 };
 
-#define OP_NB 17
+enum op_types {
+    OP_LIVE,
+    OP_LD,
+    OP_ST,
+    OP_ADD,
+    OP_SUB,
+    OP_AND,
+    OP_OR,
+    OP_XOR,
+    OP_ZJMP,
+    OP_LDI,
+    OP_STI,
+    OP_FORK,
+    OP_LLD,
+    OP_LLDI,
+    OP_LFORK,
+    OP_AFF,
+    OP_NOTHING,
+    OP_NB
+};
 typedef struct op_s op_t;
 
 /* size (in bytes) */

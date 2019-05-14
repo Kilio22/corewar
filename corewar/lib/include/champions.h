@@ -15,9 +15,9 @@ typedef struct champion {
     char prog_name[PROG_NAME_LENGTH + 1];
     int prog_id;
     int prog_size;
-    char *prog_start;
     int reg[REG_NUMBER];
     int cycles_until_death;
+    int freeze;
     int pc;
     int carry;
     int fd;
@@ -25,6 +25,7 @@ typedef struct champion {
 
 champion_t *create_champion(const char *champ_path);
 int init_champions(champion_t **champions, parsing_t *rules);
+void destroy_champion(champion_t *champ);
 void destroy_champions(champion_t **champions);
 void sort_champions(champion_t **champions, int flag);
 int choose_adresses(champion_t **champions);
@@ -37,8 +38,10 @@ int fill_empty(champion_t **champions);
 int fill_one_choose(champion_t **champions);
 int fill_multiple_choose(champion_t **champions);
 int fill_two_v_two(champion_t **champions);
+void delete_champion_id(champion_t **champions, int id);
 
 #define LEN_CHAMP(n) champions[my_arraylen((void **)champions) - n]->prog_size
 #define CHAMP_PC(n) champions[my_arraylen((void **)champions) - n]->pc
+#define PC champions[i]->pc
 
 #endif /* !CHAMPIONS_H_ */

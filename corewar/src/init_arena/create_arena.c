@@ -36,9 +36,10 @@ char *create_arena(champion_t **champions)
     for (int i = 0; champions[i]; i++) {
         n_return = put_bytecode_at_adress(arena, champions[i]->fd,
 champions[i]->pc, champions[i]->prog_size);
-        if (n_return == -1)
-            return free(arena), NULL;
-        champions[i]->prog_start = arena + champions[i]->pc;
+        if (n_return == -1) {
+            free(arena);
+            return NULL;
+        }
     }
     return arena;
 }
