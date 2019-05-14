@@ -39,6 +39,11 @@ int fill_one_choose(champion_t **champions);
 int fill_multiple_choose(champion_t **champions);
 int fill_two_v_two(champion_t **champions);
 void delete_champion_id(champion_t **champions, int id);
+void update_champions_live(void);
+int get_champion_live(int index);
+int fetch_champions_life(int index, int flag);
+void set_champion_live(int index, int value);
+champion_t **realloc_champions(champion_t **champions, champion_t *new);
 
 #define LEN_CHAMP(n) champions[my_arraylen((void **)champions) - n]->prog_size
 #define CHAMP_PC(n) champions[my_arraylen((void **)champions) - n]->pc

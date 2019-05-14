@@ -115,7 +115,7 @@ int loop_corewar(champion_t **champions, int dump)
         execute_champions_instruction(champions, arena);
         for (int i = 0; champions[i]; i++) {
             --champions[i]->freeze;
-            --champions[i]->cycles_until_death; 
+            update_champions_live();
         }
         update_champions_live_status(champions);
     }
