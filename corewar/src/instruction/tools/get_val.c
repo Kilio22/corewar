@@ -13,7 +13,7 @@ int get_val(champion_t *champ, char *arena, code_t desc, int val)
         return champ->reg[val - 1];
     if (desc == DIR)
         return val;
-    return arena[champ->pc + (val % IDX_MOD) % MEM_SIZE];
+    return read_arg(arena, (champ->pc + (val % IDX_MOD)) % MEM_SIZE);
 }
 
 int get_long_val(champion_t *champ, char *arena, code_t desc, int val)
@@ -22,5 +22,5 @@ int get_long_val(champion_t *champ, char *arena, code_t desc, int val)
         return champ->reg[val - 1];
     if (desc == DIR)
         return val;
-    return arena[champ->pc + val % MEM_SIZE];
+    return read_arg(arena, (champ->pc + val) % MEM_SIZE);
 }
