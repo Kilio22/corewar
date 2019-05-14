@@ -12,7 +12,7 @@ void display_winning_champions(champion_t **champions)
     int nb = 0;
 
     if (!champions[0]) {
-        my_printf("No one won\n");
+        my_printf("Tous les champions sont morts...\n");
         return;
     }
     nb = champions[0]->cycles_until_death;
