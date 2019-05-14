@@ -5,14 +5,13 @@
 ** load instruction
 */
 
-#include "instruction.h"
 #include "corewar.h"
 
 int inst_ld(champion_t *champ, char *arena, char desc, int *args)
 {
-    if (args[1] < 0 || args[1] > 15)
+    if (is_reg(args) == -1)
         return -1;
-    champ->reg[args[1] - 1] = arena[(champ->pc + args[0] - 1) % MEM_SIZE];
+    champ->reg[args[1] - 1] = get_val(champ, arena, desc, args);
     refresh_carry(champ->reg[args[1] - 1])
     return 0;
 }

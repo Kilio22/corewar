@@ -17,9 +17,11 @@ enum instruction_types {
     IDR
 };
 
+/* tools/ */
 void refresh_carry(champion_t *champ, int value);
 int get_val(champion_t *champ, char *arena, code_t desc, int val);
 int get_long_val(champion_t *champ, char *arena, code_t desc, int val);
+int is_reg(int *args);
 
 /* inst_ld.c */
 int inst_ld(champion_t *champ, char *arena, char desc, int *args);
@@ -35,5 +37,11 @@ int inst_sub(champion_t *champ, char *arena, char desc, int *args);
 
 /* inst_and.c */
 int inst_and(champion_t *champ, char *arena, char desc, int *args);
+
+/* inst_or.c */
+int inst_or(champion_t *champ, char *arena, char desc, int *args);
+
+/* inst_xor.c */
+int inst_xor(champion_t *champ, char *arena, char desc, int *args);
 
 #endif

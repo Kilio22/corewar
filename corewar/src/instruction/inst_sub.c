@@ -2,26 +2,17 @@
 ** EPITECH PROJECT, 2019
 ** inst_sub.c
 ** File description:
-** sub instruction
+** sub intruction
 */
 
-#include "instruction.h"
 #include "corewar.h"
 
-static int is_reg(int reg)
+int inst_sub(champion_t *champ, char *arena, code_t desc, int *args)
 {
-    if (reg < 0 || reg > 15)
+    if (is_reg(args) == -1)
         return -1;
-    return 0;
-}
-
-int inst_sub(champion_t *champ, char *arena __attribute__((unused)),
-char desc, int *args)
-{
-    for (int i = 0; i < 3; i++)
-        if (is_reg(args[i]) == -1)
-            return -1;
-    get_val(args[2]) = get_val(args[0]) - get_val(args[1]);
-    refresh_carry(champ, get_val(args[2]));
+    champ->reg[args[2] - 1] = get_val(champ, arena, desc, args[0])
+- get_val(champ, arena, desc, args[1]);
+    refresh_carry(champ, champ->reg[args[2] - 1]);
     return 0;
 }

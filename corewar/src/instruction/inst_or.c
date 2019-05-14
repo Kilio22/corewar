@@ -2,17 +2,17 @@
 ** EPITECH PROJECT, 2019
 ** inst_or.c
 ** File description:
-** or instruction
+** or intruction
 */
 
-#include "instruction.h"
 #include "corewar.h"
 
-int inst_or(champion_t *champ, char *arena, char desc, int *args)
+int inst_or(champion_t *champ, char *arena, code_t desc, int *args)
 {
-    if (args[2] < 0 || args[2] > 15)
+    if (is_reg(args) == -1)
         return -1;
-    get_val(args[2]) = get_val(args[0]) | get_val(args[1]);
-    refresh_carry(get_val(args[2]));
+    champ->reg[args[2] - 1] = get_val(champ, arena, desc, args[0])
+| get_val(champ, arena, desc, args[1]);
+    refresh_carry(champ, champ->reg[args[2] - 1]);
     return 0;
 }
