@@ -12,7 +12,7 @@ void display_winning_champions(champion_t **champions)
     int nb = 0;
 
     if (!champions[0]) {
-        my_printf("Tous les champions sont morts...\n");
+        my_puts("Tous les champions sont morts...");
         return;
     }
     nb = champions[0]->cycles_until_death;
@@ -45,7 +45,6 @@ void update_champions_live_status(champion_t **champions)
     for (int i = 0; champions[i]; i++) {
         if (champions[i]->cycles_until_death > 0)
             continue;
-        printf("Deleted champion %s[%d]\n", champions[i]->prog_name, champions[i]->prog_id);
         delete_champion_id(champions, champions[i]->prog_id);
         i = -1;
     }
