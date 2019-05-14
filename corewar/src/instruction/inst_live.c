@@ -7,7 +7,7 @@
 
 #include "corewar.h"
 
-int inst_live(champion_t *champ, char *arena, code_t desc, int *args)
+int inst_live(champion_t *champ, char *arena U, code_t desc U, int *args)
 {
     static int nb_times = 0;
     static int cycles_to_die = CYCLE_TO_DIE;

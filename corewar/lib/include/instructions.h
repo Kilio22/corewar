@@ -8,7 +8,7 @@
 #ifndef INSTRUCTION_H
 #define INSTRUCTION_H
 
-#define ARG_TYPE(n) ((desc << n * 2) & 0b11000000) >> 6))
+#define ARG_TYPE(n) (((desc << n * 2) & 0b11000000) >> 6)
 #define MASK(n) ARG_TYPE(n), args[n]
 
 enum instruction_types {
@@ -21,27 +21,28 @@ enum instruction_types {
 void refresh_carry(champion_t *champ, int value);
 int get_val(champion_t *champ, char *arena, code_t desc, int val);
 int get_long_val(champion_t *champ, char *arena, code_t desc, int val);
-int is_reg(int *args);
+int is_reg(code_t desc, int *args);
 
-/* inst_ld.c */
-int inst_ld(champion_t *champ, char *arena, char desc, int *args);
+/* READ & WRITE */
+void write_arg(char *arena, int offset, int val);
+int read_arg(char *arena, int offset);
 
-/* inst_st.c */
-int inst_st(champion_t *champ, char *arena, char desc, int *args);
-
-/* inst_add.c */
-int inst_add(champion_t *champ, char *arena, char desc, int *args);
-
-/* inst_sub.c */
-int inst_sub(champion_t *champ, char *arena, char desc, int *args);
-
-/* inst_and.c */
-int inst_and(champion_t *champ, char *arena, char desc, int *args);
-
-/* inst_or.c */
-int inst_or(champion_t *champ, char *arena, char desc, int *args);
-
-/* inst_xor.c */
-int inst_xor(champion_t *champ, char *arena, char desc, int *args);
+#define U __attribute__((unused))
+int inst_live(champion_t *champ, char *arena, code_t desc, int *args);
+int inst_ld(champion_t *champ, char *arena, code_t desc, int *args);
+int inst_st(champion_t *champ, char *arena, code_t desc, int *args);
+int inst_add(champion_t *champ, char *arena, code_t desc, int *args);
+int inst_sub(champion_t *champ, char *arena, code_t desc, int *args);
+int inst_and(champion_t *champ, char *arena, code_t desc, int *args);
+int inst_or(champion_t *champ, char *arena, code_t desc, int *args);
+int inst_xor(champion_t *champ, char *arena, code_t desc, int *args);
+int inst_zjmp(champion_t *champ, char *arena, code_t desc, int *args);
+int inst_ldi(champion_t *champ, char *arena, code_t desc, int *args);
+int inst_sti(champion_t *champ, char *arena, code_t desc, int *args);
+int inst_fork(champion_t *champ, char *arena, code_t desc, int *args);
+int inst_lld(champion_t *champ, char *arena, code_t desc, int *args);
+int inst_lldi(champion_t *champ, char *arena, code_t desc, int *args);
+int inst_lfork(champion_t *champ, char *arena, code_t desc, int *args);
+int inst_aff(champion_t *champ, char *arena, code_t desc, int *args);
 
 #endif
