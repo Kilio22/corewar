@@ -7,7 +7,7 @@
 
 #include "corewar.h"
 
-int is_reg(int *args)
+int is_reg(code_t desc, int *args)
 {
     for (int i = 0; i < 3; i++) {
         if (ARG_TYPE(i) != REG)
