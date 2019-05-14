@@ -22,11 +22,12 @@ int inst_add(champion_t *champ, char *arena, code_t desc, int *args)
         }
         printf("]");
         while (tmp & 0b11000000) {
-            printf(" %X", args[j++]);
+            printf(" %X (%d)", args[j], args[j]);
+            j++;
             tmp <<= 2;
         }
     } else
-        printf(" %X", args[0]);
+        printf(" %X (%d)", args[0], args[0]);
     puts("");
     return 0;
 }
