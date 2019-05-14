@@ -41,9 +41,13 @@ choose_adresses(champions) == 84) {
 static int corewar_main(int ac, char const *argv[])
 {
     parsing_t parsing;
-    champion_t *champions[MAX_CHAMPIONS + 1] = {0, 0, 0, 0, 0};
+    champion_t **champions = malloc(sizeof(champion_t *) * (MAX_CHAMPIONS + 1));
     int n_return = 0;
 
+    if (!champions)
+        return 84;
+    for (size_t i = 0; i < MAX_CHAMPIONS; i++)
+        champions[i] = NULL;
     if (init_corewar(champions, &parsing, ac, argv) == 84)
         return 84;
     loop_corewar(champions, parsing.dump);
