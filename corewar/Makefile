@@ -63,6 +63,8 @@ SRC	=	$(INIT_ARENA_PATH)check_overlap.c	\
 		$(INSTRUC_PATH)inst_ld.c	\
 		$(INSTRUC_PATH)inst_st.c	\
 		$(INSTRUC_PATH)inst_add.c	\
+		$(INSTRUC_PATH)inst_sub.c	\
+		$(INSTRUC_PATH)inst_and.c	\
 		corewar_loop.c \
 		destroy_champions.c \
 		dump_arena.c \

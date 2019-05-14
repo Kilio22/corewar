@@ -5,6 +5,7 @@
 ** add intruction
 */
 
+#include "instruction.h"
 #include "corewar.h"
 
 static int is_reg(int reg)

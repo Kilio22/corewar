@@ -24,4 +24,12 @@ int inst_st(champion_t *champ, char *arena, char desc, int *args);
 
 int inst_add(champion_t *champ, char *arena, char desc, int *args);
 
+/* inst_sub.c */
+
+int inst_sub(champion_t *champ, char *arena, char desc, int *args);
+
+/* inst_and.c */
+
+int inst_and(champion_t *champ, char *arena, char desc, int *args);
+
 #endif

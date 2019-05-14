@@ -18,6 +18,6 @@ int inst_st(champion_t *champ, char *arena, char desc, int *args)
         champ->reg[args[0] - 1] = champ->reg[args[1] - 1];
     }
     else
-        champ->reg[args[0] - 1] = arena[(champ->pc + args[1] % IDX_MOD)];
+        champ->reg[args[0] - 1] = arena[(champ->pc + args[1] % IDX_MOD) % MEM_SIZE];
     return 0;
 }
