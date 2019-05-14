@@ -47,5 +47,6 @@ void update_champions_live_status(champion_t **champions)
             continue;
         printf("Deleted champion %s[%d]\n", champions[i]->prog_name, champions[i]->prog_id);
         delete_champion_id(champions, champions[i]->prog_id);
+        i = -1;
     }
 }
