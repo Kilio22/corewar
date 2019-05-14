@@ -32,7 +32,7 @@ int get_champion_live(int index)
 
 void set_champion_live(int index, int value)
 {
-    return fetch_champions_life(index, value);
+    fetch_champions_life(index, value);
 }
 
 void update_champions_live(void)
