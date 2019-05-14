@@ -5,27 +5,22 @@
 ** check if it's a register
 */
 
-#include "instruction.h"
 #include "corewar.h"
 
-int check_type(char args)
+int get_val(champion_t *champ, char *arena, code_t desc, int val)
 {
-    if (args == 0b01)
-        return REG;
-    if (args == 0b10)
-        return DIR;
-    if (args == 0b11)
-        return IDR;
-    return -1;
+    if (desc == REG)
+        return champ->reg[val - 1];
+    if (desc == DIR)
+        return val;
+    return arena[champ->pc + (val % IDX_MOD) % MEM_SIZE];
 }
 
-int get_val(champion_t *champ, char *arena, char desc, int args)
+int get_long_val(champion_t *champ, char *arena, code_t desc, int val)
 {
-    if (check_type((desc & 0b11000000) >> 6) == REG)
-        return champ->reg[arg - 1];
-    if (check_type((desc & 0b11000000) >> 6) == DIR)
-        return arg;
-    if (check_type((desc & 0b11000000) >> 6) == IDR)
-        return arg + champ->pc;
-    return -1;
+    if (desc == REG)
+        return champ->reg[val - 1];
+    if (desc == DIR)
+        return val;
+    return arena[champ->pc + val % MEM_SIZE];
 }
