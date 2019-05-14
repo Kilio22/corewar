@@ -58,17 +58,19 @@ SRC	=	$(INIT_ARENA_PATH)check_overlap.c	\
 		$(PARSING_PATH)manage_parsing_fcts.c \
 		$(PARSING_PATH)parsing_globals.c \
 		$(PARSING_PATH)parsing.c \
-		$(INSTRUC_PATH)tools/carry.c	\
-		$(INSTRUC_PATH)tools/get_val.c	\
-		$(INSTRUC_PATH)tools/is_reg.c	\
-		$(INSTRUC_PATH)inst_add.c	\
-		$(INSTRUC_PATH)inst_and.c	\
-		$(INSTRUC_PATH)inst_ld.c	\
-		$(INSTRUC_PATH)inst_live.c	\
-		$(INSTRUC_PATH)inst_or.c	\
-		$(INSTRUC_PATH)inst_st.c	\
-		$(INSTRUC_PATH)inst_sub.c	\
-		$(INSTRUC_PATH)inst_xor.c	\
+		$(INSTRUC_PATH)tools/get_val.c \
+		$(INSTRUC_PATH)tools/is_reg.c \
+		$(INSTRUC_PATH)tools/read_arg.c \
+		$(INSTRUC_PATH)tools/refresh_carry.c \
+		$(INSTRUC_PATH)tools/write_arg.c \
+		$(INSTRUC_PATH)inst_add.c \
+		$(INSTRUC_PATH)inst_and.c \
+		$(INSTRUC_PATH)inst_ld.c \
+		$(INSTRUC_PATH)inst_live.c \
+		$(INSTRUC_PATH)inst_or.c \
+		$(INSTRUC_PATH)inst_st.c \
+		$(INSTRUC_PATH)inst_sub.c \
+		$(INSTRUC_PATH)inst_xor.c \
 		check_param_bytecode.c \
 		corewar_loop.c \
 		count_inst_byte.c \
