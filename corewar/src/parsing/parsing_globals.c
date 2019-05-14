@@ -13,6 +13,6 @@ const char *flags[] = {
     "-a"
 };
 
-int (* const tab_ftcs[])(size_t *, char const **argv, parsing_t *, int *) = {
+int (* const tab_ftcs[])(size_t *, char const **, parsing_t *, int *) = {
         manage_dump, manage_nb, manage_adress
 };

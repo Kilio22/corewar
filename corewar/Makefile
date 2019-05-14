@@ -57,10 +57,13 @@ SRC	=	$(INIT_ARENA_PATH)check_overlap.c	\
 		$(PARSING_PATH)manage_parsing_fcts.c \
 		$(PARSING_PATH)parsing_globals.c \
 		$(PARSING_PATH)parsing.c \
+		check_param_bytecode.c \
 		corewar_loop.c \
-		debug_print.c	\
+		count_inst_byte.c \
+		debug_print.c \
 		destroy_champions.c \
 		dump_arena.c \
+		is_game_ended.c \
 		op.c \
 		utils.c
 
