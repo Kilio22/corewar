@@ -30,7 +30,7 @@ bool is_game_ended(champion_t **champions)
         if (champions[i]->cycles_until_death > 0)
             nb_alive++;
     }
-    if (nb_alive == 1)
+    if (nb_alive <= 1)
         return true;
     return false;
 }
@@ -40,6 +40,7 @@ void update_champions_live_status(champion_t **champions)
     for (int i = 0; champions[i]; i++) {
         if (champions[i]->cycles_until_death > 0)
             continue;
+        printf("Deleted champion %s[%d]\n", champions[i]->prog_name, champions[i]->prog_id);
         delete_champion_id(champions, champions[i]->prog_id);
     }
 }
