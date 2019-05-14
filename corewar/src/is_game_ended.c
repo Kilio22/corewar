@@ -9,8 +9,13 @@
 
 void display_winning_champions(champion_t **champions)
 {
-    int nb = champions[0]->cycles_until_death;
+    int nb = 0;
 
+    if (!champions[0]) {
+        my_printf("No one won\n");
+        return;
+    }
+    nb = champions[0]->cycles_until_death;
     for (int i = 1; champions[i]; i++) {
         if (champions[i]->cycles_until_death > nb)
             nb = champions[i]->cycles_until_death;
