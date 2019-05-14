@@ -21,7 +21,7 @@ char desc, int *args)
     for (int i = 0; i < 3; i++)
         if (is_reg(args[i]) == -1)
             return -1;
-    champ->reg[args[2] - 1] = champ->reg[args[0] - 1] - champ->reg[args[1] - 1];
-    refresh_carry(champ, champ->reg[args[2] - 1]);
+    get_val(args[2]) = get_val(args[0]) - get_val(args[1]);
+    refresh_carry(champ, get_val(args[2]));
     return 0;
 }
