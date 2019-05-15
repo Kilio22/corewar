@@ -32,7 +32,7 @@ static int get_arg(char *arena, char type, int op_idx, int *offset)
     int arg_len = get_arg_length(type, op_idx);
     int arg = read_arg(arena, *offset, arg_len);
 
-    (*offset) = (*offset + arg_len) % MEM_SIZE;
+    *offset = (*offset + arg_len) % MEM_SIZE;
     printf(" ");
     print_binary(arg);
     printf(" ");

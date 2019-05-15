@@ -9,11 +9,11 @@
 
 int read_arg(char *arena, int offset, int n)
 {
-    int arg = 0;
+    int arg = arena[offset] & 0b10000000 ? -1 : 0;
 
     for (int i = 0; i < n; i++) {
         arg <<= 8;
-        arg += arena[offset];
+        arg |= arena[offset] & 0b11111111;
         offset = (offset + 1) % MEM_SIZE;
     }
     return arg;
