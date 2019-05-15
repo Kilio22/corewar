@@ -29,15 +29,10 @@ void print_binary(int nb)
 
 static int get_arg(char *arena, char type, int op_idx, int *offset)
 {
-    int arg = 0;
     int arg_len = get_arg_length(type, op_idx);
+    int arg = read_arg(arena, *offset, arg_len);
 
-    for (int i = arg_len; i > 0; i--) {
-        arg <<= 8;
-        arg += arena[*offset];
-        printf(" %d", arena[*offset]);
-        (*offset) = (*offset + 1) % MEM_SIZE;
-    }
+    (*offset) = (*offset + arg_len) % MEM_SIZE;
     printf(" ");
     print_binary(arg);
     printf(" ");
