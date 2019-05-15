@@ -18,15 +18,29 @@ bool op_needs_args(int op_idx)
     return true;
 }
 
+void print_binary(int nb)
+{
+    for (int i = 31; i >= 0; i--) {
+        printf("%d", (nb >> i) & 0b1);
+        if (!(i % 8))
+            printf(" ");
+    }
+}
+
 static int get_arg(char *arena, char type, int op_idx, int *offset)
 {
     int arg = 0;
+    int arg_len = get_arg_length(type, op_idx);
 
-    for (int i = get_arg_length(type, op_idx); i > 0; i--) {
+    for (int i = arg_len; i > 0; i--) {
         arg <<= 8;
         arg += arena[*offset];
+        printf(" %d", arena[*offset]);
         (*offset) = (*offset + 1) % MEM_SIZE;
     }
+    printf(" ");
+    print_binary(arg);
+    printf(" ");
     return arg;
 }
 
