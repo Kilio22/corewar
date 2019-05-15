@@ -29,6 +29,8 @@ choose_adresses(champions) == 84) {
         destroy_corewar(champions, parsing);
         return 84;
     }
+    for (int i = 0; champions[i]; i++)
+        champions[i]->pc %= MEM_SIZE;
     sort_champions(champions, 0);
     print_champions(champions);
     if (check_overlap(champions) == 84) {
