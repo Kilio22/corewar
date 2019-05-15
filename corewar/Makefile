@@ -58,6 +58,7 @@ SRC	=	$(INIT_ARENA_PATH)check_overlap.c	\
 		$(PARSING_PATH)manage_parsing_fcts.c \
 		$(PARSING_PATH)parsing_globals.c \
 		$(PARSING_PATH)parsing.c \
+		$(INSTRUC_PATH)tools/get_first_two_bytes.c \
 		$(INSTRUC_PATH)tools/get_val.c \
 		$(INSTRUC_PATH)tools/is_reg.c \
 		$(INSTRUC_PATH)tools/read_arg.c \
@@ -66,13 +67,16 @@ SRC	=	$(INIT_ARENA_PATH)check_overlap.c	\
 		$(INSTRUC_PATH)inst_add.c \
 		$(INSTRUC_PATH)inst_and.c \
 		$(INSTRUC_PATH)inst_ld.c \
+		$(INSTRUC_PATH)inst_ldi.c	\
 		$(INSTRUC_PATH)inst_live.c \
+		$(INSTRUC_PATH)inst_lld.c	\
+		$(INSTRUC_PATH)inst_lldi.c	\
 		$(INSTRUC_PATH)inst_or.c \
 		$(INSTRUC_PATH)inst_st.c \
+		$(INSTRUC_PATH)inst_sti.c \
 		$(INSTRUC_PATH)inst_sub.c \
 		$(INSTRUC_PATH)inst_xor.c \
 		$(INSTRUC_PATH)inst_zjmp.c \
-		$(INSTRUC_PATH)inst_ldi.c \
 		check_param_bytecode.c \
 		corewar_loop.c \
 		count_inst_byte.c \

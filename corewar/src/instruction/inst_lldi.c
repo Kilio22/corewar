@@ -5,6 +5,7 @@
 ** inst_lldi
 */
 
+#include "instructions.h"
 #include "corewar.h"
 
 int inst_lldi(champion_t *champ, char *arena, code_t desc, int *args)

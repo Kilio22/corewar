@@ -5,6 +5,7 @@
 ** ldi instruction
 */
 
+#include "instructions.h"
 #include "corewar.h"
 
 int inst_ldi(champion_t *champ, char *arena, code_t desc, int *args)

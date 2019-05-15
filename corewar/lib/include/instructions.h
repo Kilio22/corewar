@@ -8,6 +8,8 @@
 #ifndef INSTRUCTION_H
 #define INSTRUCTION_H
 
+#include "op.h"
+
 #define ARG_TYPE(n) (((desc << n * 2) & 0b11000000) >> 6)
 #define MASK(n) ARG_TYPE(n), args[n]
 

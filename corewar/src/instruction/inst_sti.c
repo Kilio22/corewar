@@ -5,6 +5,7 @@
 ** inst_sti
 */
 
+#include "instructions.h"
 #include "corewar.h"
 
 int inst_sti(champion_t *champ, char *arena, code_t desc, int *args)
