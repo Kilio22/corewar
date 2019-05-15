@@ -7,7 +7,7 @@
 
 #include "corewar.h"
 
-int inst_zjmp(champion_t *champ, char *arena, code_t desc, int *args)
+int inst_zjmp(champion_t *champ, char *arena U, code_t desc U, int *args)
 {
     int jump = args[0] % IDX_MOD;
 
