@@ -10,7 +10,7 @@
 
 int inst_lldi(champion_t *champ, char *arena, code_t desc, int *args)
 {
-    int val[3] = {get_val(champ, arena, MASK(0)),
+    int val[3] = {get_long_val(champ, arena, MASK(0)),
 get_val(champ, arena, MASK(1)), get_val(champ, arena, MASK(2))};
     int s;
 
