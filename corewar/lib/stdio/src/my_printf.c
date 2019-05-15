@@ -15,6 +15,8 @@ static int print_flag(char mode, va_list list)
         return (my_putstr(my_itoa(va_arg(list, int))));
     if (mode == 's')
         return (my_putstr(va_arg(list, char *)));
+    if (mode == 'c')
+        return my_putchar(va_arg(list, int));
     if (mode == '%')
         return (my_putchar('c'));
     return (0);
