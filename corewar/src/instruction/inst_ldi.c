@@ -20,7 +20,7 @@ get_val(champ, arena, MASK(1)), get_val(champ, arena, MASK(2))};
         val[0] = get_first_two_bytes(val[0]);
     s = val[0] + val[1];
     champ->reg[val[2]] =
-read_arg(arena, (champ->pc + (s % IDX_MOD)) % MEM_SIZE);
+read_arg(arena, (champ->pc + (s % IDX_MOD)) % MEM_SIZE, REG_SIZE);
     refresh_carry(champ, champ->reg[val[2]]);
     return 0;
 }
