@@ -61,9 +61,7 @@ SRC	=	$(INIT_ARENA_PATH)check_overlap.c	\
 		$(INSTRUC_PATH)tools/get_first_two_bytes.c \
 		$(INSTRUC_PATH)tools/get_val.c \
 		$(INSTRUC_PATH)tools/is_reg.c \
-		$(INSTRUC_PATH)tools/read_arg.c \
 		$(INSTRUC_PATH)tools/refresh_carry.c \
-		$(INSTRUC_PATH)tools/write_arg.c \
 		$(INSTRUC_PATH)inst_add.c \
 		$(INSTRUC_PATH)inst_and.c \
 		$(INSTRUC_PATH)inst_ld.c \
@@ -86,7 +84,9 @@ SRC	=	$(INIT_ARENA_PATH)check_overlap.c	\
 		is_game_ended.c \
 		manage_champions_live.c	\
 		op.c \
-		utils.c
+		read_arg.c \
+		utils.c \
+		write_arg.c
 
 SRC_LIB	=	stdio my string
 

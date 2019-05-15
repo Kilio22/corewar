@@ -26,10 +26,6 @@ int get_long_val(champion_t *champ, char *arena, code_t desc, int val);
 int is_reg(code_t desc, int *args, int nb_arg);
 int get_first_two_bytes(int val);;
 
-/* READ & WRITE */
-void write_arg(char *arena, int offset, int val);
-int read_arg(char *arena, int offset);
-
 #define U __attribute__((unused))
 int inst_live(champion_t *champ, char *arena, code_t desc, int *args);
 int inst_ld(champion_t *champ, char *arena, code_t desc, int *args);

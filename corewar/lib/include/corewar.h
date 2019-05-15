@@ -37,5 +37,7 @@ int check_param_bytecode(int op_idx, char args);
 int find_type(char args);
 int count_inst_bytes(code_t code, int op_idx);
 int get_arg_length(char type, int index);
+int read_arg(char *arena, int offset, int n);
+void write_arg(char *arena, int offset, int val);
 
 #endif /* !COREWAR_H_ */
