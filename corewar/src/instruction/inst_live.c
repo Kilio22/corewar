@@ -14,7 +14,7 @@ int inst_live(champion_t *champ, char *arena U, code_t desc U, int *args)
 
     if (args[0] < 1 || args[0] > 4)
         return 0;
-    my_printf("Le joueur %d (%s) est en vie.\n",
+    my_printf("The player %d(%s) is alive.\n",
 champ->prog_id, champ->prog_name);
     ++nb_times;
     if (nb_times >= NBR_LIVE) {

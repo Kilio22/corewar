@@ -12,7 +12,7 @@ void display_winning_champions(champion_t **champions)
     int nb = 0;
 
     if (!*champions) {
-        my_printf("Tous les champions sont morts...\n");
+        my_printf("Nobody survived...\n");
         return;
     }
     nb = get_champion_live(0);
@@ -24,7 +24,7 @@ get_champion_live(champions[i]->prog_id) > nb)
     for (int i = 0; champions[i]; i++) {
         if (champions[i]->cycles_until_death == -1 ||
 get_champion_live(champions[i]->prog_id) == nb)
-            my_printf("Le joueur %d (%s) a gagné.\n",
+            my_printf("The player%d (%s) won.\n",
 champions[i]->prog_id, champions[i]->prog_name);
     }
 }
@@ -45,6 +45,7 @@ get_champion_live(champions[i]->prog_id) > 0)
 
 void update_champions_live_status(champion_t **champions)
 {
+    update_champions_live();
     for (int i = 0; champions[i]; i++) {
         if (champions[i]->cycles_until_death == -1 ||
 get_champion_live(champions[i]->prog_id) > 0)
