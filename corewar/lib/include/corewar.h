@@ -20,10 +20,15 @@
 
 typedef struct champion champion_t;
 
+typedef struct core_s {
+    champion_t **champions;
+    char *arena;
+} core_t;
+
 void print_params(parsing_t *parsing);
 void print_champions(champion_t **champions);
 char *create_arena(champion_t **champions);
-int loop_corewar(champion_t **champions, int dump);
+int loop_corewar(core_t *core, int dump);
 void dump_arena(char *arena);
 void display_winning_champions(champion_t **champions);
 bool is_game_ended(champion_t **champions);

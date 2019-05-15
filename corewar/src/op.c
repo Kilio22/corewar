@@ -7,12 +7,12 @@
 
 #include "corewar.h"
 
-int debug(champion_t *champ, char *arena, code_t desc, int *args)
+int debug(champion_t *champ, core_t *core, code_t desc, int *args)
 {
     code_t tmp = desc;
     int j = 0;
 
-    (void) arena;
+    (void) core;
     printf("Champion %s[%d] called :", champ->prog_name, champ->prog_id);
     if (desc != 0) {
         printf(" %X[", desc);

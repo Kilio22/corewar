@@ -47,6 +47,6 @@ champion_t **realloc_champions(champion_t **champions, champion_t *new);
 
 #define LEN_CHAMP(n) champions[my_arraylen((void **)champions) - n]->prog_size
 #define CHAMP_PC(n) champions[my_arraylen((void **)champions) - n]->pc
-#define PC champions[i]->pc
+#define PC core->champions[i]->pc
 
 #endif /* !CHAMPIONS_H_ */

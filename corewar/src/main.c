@@ -38,25 +38,27 @@ choose_adresses(champions) == 84) {
     return 0;
 }
 
-static int corewar_main(int ac, char const *argv[])
+static int corewar_main(int ac, char const *argv[], core_t *core)
 {
     parsing_t parsing;
-    champion_t **champions = malloc(sizeof(champion_t *) * (MAX_CHAMPIONS + 1));
     int n_return = 0;
 
-    if (!champions)
-        return 84;
     for (size_t i = 0; i < MAX_CHAMPIONS; i++)
-        champions[i] = NULL;
-    if (init_corewar(champions, &parsing, ac, argv) == 84)
+        core->champions[i] = NULL;
+    if (init_corewar(core->champions, &parsing, ac, argv) == 84)
         return 84;
-    loop_corewar(champions, parsing.dump);
-    destroy_champions(champions);
+    loop_corewar(core, parsing.dump);
+    destroy_champions(core->champions);
     destroy_args(&parsing);
     return n_return;
 }
 
 int main(int argc, char const *argv[])
 {
-    return corewar_main(argc, argv);
+    core_t core;
+
+    core.champions = malloc(sizeof(champion_t *) * (MAX_CHAMPIONS + 1));
+    if (!core.champions)
+        return 84;
+    return corewar_main(argc, argv, &core);
 }
