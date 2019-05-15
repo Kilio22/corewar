@@ -122,10 +122,8 @@ int loop_corewar(core_t *core, int dump)
             break;
         }
         execute_champions_instruction(core);
-        for (int i = 0; core->champions[i]; i++) {
+        for (int i = 0; core->champions[i]; i++)
             --core->champions[i]->freeze;
-            update_champions_live();
-        }
         update_champions_live_status(core->champions);
     }
     display_winning_champions(core->champions);
