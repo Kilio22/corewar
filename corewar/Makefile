@@ -71,6 +71,8 @@ SRC	=	$(INIT_ARENA_PATH)check_overlap.c	\
 		$(INSTRUC_PATH)inst_st.c \
 		$(INSTRUC_PATH)inst_sub.c \
 		$(INSTRUC_PATH)inst_xor.c \
+		$(INSTRUC_PATH)inst_zjmp.c \
+		$(INSTRUC_PATH)inst_ldi.c \
 		check_param_bytecode.c \
 		corewar_loop.c \
 		count_inst_byte.c \

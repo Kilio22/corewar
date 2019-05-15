@@ -11,7 +11,7 @@ int inst_st(champion_t *champ, char *arena, code_t desc, int *args)
 {
     int val;
 
-    if (is_reg(desc, args) == -1)
+    if (is_reg(desc, args, 2) == -1)
         return -1;
     val = get_val(champ, arena, MASK(0));
     if (ARG_TYPE(1) == REG)
