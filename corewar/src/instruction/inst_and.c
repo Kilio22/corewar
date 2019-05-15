@@ -9,7 +9,7 @@
 
 int inst_and(champion_t *champ, char *arena, code_t desc, int *args)
 {
-    if (is_reg(desc, args) == -1)
+    if (is_reg(desc, args, 3) == -1)
         return -1;
     champ->reg[args[2] - 1] = get_val(champ, arena, MASK(0)) &
 get_val(champ, arena, MASK(1));
