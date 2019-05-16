@@ -23,7 +23,6 @@ char const *av[])
         destroy_corewar(champions, parsing);
         return 84;
     }
-    print_params(parsing);
     if (init_champions(champions, parsing) ||
 choose_adresses(champions) == 84) {
         destroy_corewar(champions, parsing);
@@ -32,7 +31,6 @@ choose_adresses(champions) == 84) {
     for (int i = 0; champions[i]; i++)
         champions[i]->pc %= MEM_SIZE;
     sort_champions(champions, 0);
-    print_champions(champions);
     if (check_overlap(champions) == 84) {
         destroy_corewar(champions, parsing);
         return 84;
@@ -62,5 +60,7 @@ int main(int argc, char const *argv[])
     core.champions = malloc(sizeof(champion_t *) * (MAX_CHAMPIONS + 1));
     if (!core.champions)
         return 84;
+    for (int i = 0; i < MAX_CHAMPIONS + 1; i++)
+        core.champions[i] = NULL;
     return corewar_main(argc, argv, &core);
 }

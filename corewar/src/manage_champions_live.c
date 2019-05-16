@@ -13,15 +13,16 @@ int fetch_champions_life(int index, int flag)
 CYCLE_TO_DIE, CYCLE_TO_DIE};
 
     if (flag == -2)
-        return lives[index];
+        return lives[index - 1];
     if (flag != -1) {
-        lives[index] = flag;
+        lives[index - 1] = flag;
         return 0;
     }
-    --lives[0];
-    --lives[1];
-    --lives[2];
-    --lives[3];
+    lives[0] = lives[0] >= 0 ? lives[0] - 1 : -1;
+    lives[1] = lives[1] >= 0 ? lives[1] - 1 : -1;
+    lives[2] = lives[2] >= 0 ? lives[2] - 1 : -1;
+    lives[3] = lives[3] >= 0 ? lives[3] - 1 : -1;
+    // printf("%d %d %d %d\n", lives[0], lives[1], lives[2], lives[3]);
     return 0;
 }
 

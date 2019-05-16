@@ -20,7 +20,7 @@ static champion_t *dup_champion(champion_t *origin)
     for (int i = 0; i < REG_NUMBER; i++)
         new->reg[i] = origin->reg[i];
     new->forked = true;
-    new->freeze = origin->freeze;
+    new->freeze = op_tab[OP_FORK].nbr_cycles;
     new->pc = origin->pc;
     new->carry = origin->carry;
     new->fd = -1;
@@ -29,6 +29,7 @@ static champion_t *dup_champion(champion_t *origin)
 
 int inst_fork(champion_t *champ, core_t *core, code_t desc UNU, int *args)
 {
+    // debug(champ, core, desc, args);
     champion_t *new = dup_champion(champ);
 
     if (!new)

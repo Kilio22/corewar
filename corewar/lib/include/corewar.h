@@ -40,4 +40,6 @@ int get_arg_length(char type, int index);
 int read_arg(char *arena, int offset, int n);
 void write_arg(char *arena, int offset, int val);
 
+int debug(champion_t *champ, core_t *core, code_t desc, int *args);
+
 #endif /* !COREWAR_H_ */
