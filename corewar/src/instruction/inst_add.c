@@ -7,12 +7,11 @@
 
 #include "corewar.h"
 
-int inst_add(champion_t *champ, char *arena, code_t desc, int *args)
+int inst_add(champion_t *champ, core_t *core, code_t desc, int *args)
 {
     if (is_reg(desc, args, 3) == -1)
         return -1;
-    champ->reg[args[2] - 1] = get_val(champ, arena, MASK(0)) +
-get_val(champ, arena, MASK(1));
+    champ->reg[args[2] - 1] = GET_VAL(0) + GET_VAL(1);
     refresh_carry(champ, champ->reg[args[2] - 1]);
     return 0;
 }

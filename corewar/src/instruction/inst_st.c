@@ -7,16 +7,15 @@
 
 #include "corewar.h"
 
-int inst_st(champion_t *champ, char *arena, code_t desc, int *args)
+int inst_st(champion_t *champ, core_t *core, code_t desc, int *args)
 {
-    int val;
 
     if (is_reg(desc, args, 2) == -1)
         return -1;
-    val = get_val(champ, arena, MASK(0));
     if (ARG_TYPE(1) == REG)
-        champ->reg[args[1] - 1] = val;
+        champ->reg[args[1] - 1] = GET_VAL(0);
     else
-        write_arg(arena, (champ->pc + (args[1] % IDX_MOD)) % MEM_SIZE, val);
+        write_arg(core->arena,
+(champ->pc + (args[1] % IDX_MOD)) % MEM_SIZE, GET_VAL(0));
     return 0;
 }

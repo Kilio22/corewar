@@ -7,17 +7,12 @@
 
 #include "corewar.h"
 
-int inst_zjmp(champion_t *champ, char *arena U, code_t desc U, int *args)
+int inst_zjmp(champion_t *champ, core_t *core UNU, code_t desc UNU, int *args)
 {
-    int jump = args[0] % IDX_MOD;
-
     if (champ->carry != 1)
         return 0;
-    else {
-        if (jump < 0)
-            champ->pc = (champ->pc + jump - MEM_SIZE) % MEM_SIZE;
-        else
-            champ->pc = (champ->pc + jump) % MEM_SIZE;
-    }
+    champ->pc = (champ->pc + (args[0] % IDX_MOD)) % MEM_SIZE;
+    while (champ->pc < 0)
+        champ->pc += MEM_SIZE;
     return 0;
 }

@@ -7,11 +7,11 @@
 
 #include "corewar.h"
 
-int inst_lld(champion_t *champ, char *arena, code_t desc, int *args)
+int inst_lld(champion_t *champ, core_t *core, code_t desc, int *args)
 {
     if (is_reg(desc, args, 2) == -1)
         return -1;
-    champ->reg[args[1] - 1] = get_long_val(champ, arena, MASK(0));
+    champ->reg[args[1] - 1] = GET_LVAL(0);
     refresh_carry(champ, champ->reg[args[1] - 1]);
     return 0;
 }

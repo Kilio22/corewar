@@ -7,13 +7,10 @@
 
 #include "corewar.h"
 
-int inst_aff(champion_t *champ, char *arena, code_t desc, int *args)
+int inst_aff(champion_t *champ, core_t *core, code_t desc, int *args)
 {
-    int val = get_val(champ, arena, MASK(0));
-
-    if (is_reg(desc, args, 1))
+    if (is_reg(desc, args, 1) == -1)
         return -1;
-    val %= 256;
-    my_printf("%c\n", val);
+    my_printf("%c\n", GET_VAL(0) % 256);
     return 0;
 }

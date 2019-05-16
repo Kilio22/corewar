@@ -12,6 +12,7 @@
 
 #define ARG_TYPE(n) (((desc << n * 2) & 0b11000000) >> 6)
 #define GET_VAL(n) get_val(champ, core->arena, ARG_TYPE(n), args[n])
+#define GET_LVAL(n) get_long_val(champ, core->arena, ARG_TYPE(n), args[n])
 
 enum instruction_types {
     REG = 1,

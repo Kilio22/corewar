@@ -5,22 +5,23 @@
 ** ldi instruction
 */
 
-#include "instructions.h"
 #include "corewar.h"
 
-int inst_ldi(champion_t *champ, char *arena, code_t desc, int *args)
+int inst_ldi(champion_t *champ, core_t *core, code_t desc, int *args)
 {
-    int val[3] = {get_val(champ, arena, MASK(0)),
-get_val(champ, arena, MASK(1)), get_val(champ, arena, MASK(2))};
-    int s;
+    int sum;
+    int pos;
 
     if (is_reg(desc, args, 3) == -1)
         return -1;
+    sum = GET_VAL(0);
     if (ARG_TYPE(0) == IDR)
-        val[0] = get_first_two_bytes(val[0]);
-    s = val[0] + val[1];
-    champ->reg[val[2]] =
-read_arg(arena, (champ->pc + (s % IDX_MOD)) % MEM_SIZE, REG_SIZE);
-    refresh_carry(champ, champ->reg[val[2]]);
+        sum = get_first_two_bytes(sum);
+    sum += GET_VAL(1);
+    pos = (champ->pc + (sum % IDX_MOD)) % MEM_SIZE;
+    while (pos < 0)
+        pos += MEM_SIZE;
+    champ->reg[args[2] - 1] = read_arg(core->arena, pos, REG_SIZE);
+    refresh_carry(champ, champ->reg[args[2] - 1]);
     return 0;
 }
