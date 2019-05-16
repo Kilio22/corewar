@@ -24,18 +24,6 @@ int read_header(header_t *header, const char *champ_path)
     return fd;
 }
 
-// champion_t *make_champion(void)
-// {
-//     champion_t *champ = malloc(sizeof(champion_t));
-
-//     if (!champ)
-//         return NULL;
-//     champ->pc = 0;
-//     champ->carry = 0;
-
-//     return champ;
-// }
-
 champion_t *create_champion(const char *champ_path)
 {
     header_t header = {0, {0}, 0, {0}};
