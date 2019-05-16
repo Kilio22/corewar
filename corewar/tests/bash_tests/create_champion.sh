@@ -12,38 +12,38 @@ DIFF="./tmp/diff"
 if [ ! -d "my_cor" ]; then
     mkdir my_cor
 fi
-if [ ! -d "my_cor" ]; then
+if [ ! -d "my_cor/hexdump" ]; then
     mkdir my_cor/hexdump
 fi
-if [ ! -d "my_cor" ]; then
+if [ ! -d "his_cor" ]; then
     mkdir his_cor
 fi
-if [ ! -d "my_cor" ]; then
+if [ ! -d "his_cor/hexdump" ]; then
     mkdir his_cor/hexdump
 fi
-if [ ! -d "my_cor" ]; then
+if [ ! -d "diff" ]; then
     mkdir diff
 fi
 
 
-for filename in ./test_*.s; do
+for filename in ./champions/*.s; do
     $MY_ASM $filename
 done
 
-mv *.cor my_cor
+mv champions/*.cor my_cor
 
-for filename in ./test_*.s; do
+for filename in ./champions/*.s; do
     $HIS_ASM $filename
 done
 
 mv *.cor his_cor
 
-for filename in ./my_cor/test_*.cor; do
+for filename in ./my_cor/*.cor; do
     tmp=${filename##*/}
     hexdump -C $filename > ./my_cor/hexdump/${tmp%.*}.txt
 done
 
-for filename in ./his_cor/test_*.cor; do
+for filename in ./his_cor/*.cor; do
     tmp=${filename##*/}
     hexdump -C $filename > ./his_cor/hexdump/${tmp%.*}.txt
 done
