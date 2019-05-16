@@ -27,13 +27,13 @@ static champion_t *dup_champion(champion_t *origin)
     return new;
 }
 
-int inst_fork(champion_t *champ, core_t *core, code_t desc UNU, int *args)
+int inst_lfork(champion_t *champ, core_t *core, code_t desc UNU, int *args)
 {
     champion_t *new = dup_champion(champ);
 
     if (!new)
         return 0;
-    new->pc = (champ->pc + (args[0] % IDX_MOD)) % MEM_SIZE;
+    new->pc = (champ->pc + args[0]) % MEM_SIZE;
     while (new->pc < 0)
         new->pc += MEM_SIZE;
     core->champions = realloc_champions(core->champions, new);
