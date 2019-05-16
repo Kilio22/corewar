@@ -47,7 +47,7 @@ void update_champions_live_status(champion_t **champions)
 {
     update_champions_live();
     for (int i = 0; champions[i]; i++) {
-        if (champions[i]->forked == true||
+        if (champions[i]->forked == true ||
 get_champion_live(champions[i]->prog_id) > 0)
             continue;
         delete_champion_id(champions, champions[i]->prog_id);
