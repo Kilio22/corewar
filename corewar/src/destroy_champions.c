@@ -11,7 +11,7 @@
 
 void destroy_champion(champion_t *champ)
 {
-    if (champ->fd != -1)
+    if (!champ->forked)
         close(champ->fd);
     free(champ);
 }

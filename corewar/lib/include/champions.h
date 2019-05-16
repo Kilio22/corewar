@@ -16,7 +16,7 @@ typedef struct champion {
     int prog_id;
     int prog_size;
     int reg[REG_NUMBER];
-    int cycles_until_death;
+    bool forked;
     int freeze;
     int pc;
     int carry;
