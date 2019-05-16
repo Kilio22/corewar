@@ -65,6 +65,7 @@ SRC	=	$(INIT_ARENA_PATH)check_overlap.c	\
 		$(INSTRUC_PATH)inst_add.c \
 		$(INSTRUC_PATH)inst_aff.c \
 		$(INSTRUC_PATH)inst_and.c \
+		$(INSTRUC_PATH)inst_fork.c \
 		$(INSTRUC_PATH)inst_ld.c \
 		$(INSTRUC_PATH)inst_ldi.c	\
 		$(INSTRUC_PATH)inst_live.c \
