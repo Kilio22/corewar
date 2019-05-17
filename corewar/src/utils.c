@@ -17,6 +17,22 @@ int check_flag(char const *str)
     return -1;
 }
 
+champion_t **realloc_champions(champion_t **champions, champion_t *new)
+{
+    size_t len = my_arraylen((void **) champions);
+    champion_t **new_arr = malloc(sizeof(champion_t *) * (len + 2));
+    size_t i = 0;
+
+    if (!new_arr)
+        return NULL;
+    for (; champions[i]; i++)
+        new_arr[i] = champions[i];
+    new_arr[i] = new;
+    new_arr[++i] = NULL;
+    free(champions);
+    return new_arr;
+}
+
 champion_params_t **realloc_params(champion_params_t **old)
 {
     champion_params_t **new = malloc(sizeof(champion_params_t *) *

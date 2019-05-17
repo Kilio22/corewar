@@ -6,6 +6,7 @@
 */
 
 #include <endian.h>
+#include <stdlib.h>
 #include "corewar.h"
 
 bool op_needs_args(int op_idx)
@@ -17,15 +18,23 @@ bool op_needs_args(int op_idx)
     return true;
 }
 
+void print_binary(int nb)
+{
+    for (int i = 31; i >= 0; i--) {
+        printf("%d", (nb >> i) & 0b1);
+        if (!(i % 8))
+            printf(" ");
+    }
+}
+
 static int get_arg(char *arena, char type, int op_idx, int *offset)
 {
-    int arg = 0;
+    int arg_len = get_arg_length(type, op_idx);
+    int arg = read_arg(arena, *offset, arg_len);
 
-    for (int i = get_arg_length(type, op_idx); i > 0; i--) {
-        arg <<= 8;
-        arg += arena[*offset];
-        (*offset) = (*offset + 1) % MEM_SIZE;
-    }
+    *offset = (*offset + arg_len) % MEM_SIZE;
+    // print_binary(arg);
+    // printf(" ");
     return arg;
 }
 
@@ -56,12 +65,12 @@ static void get_inst_arguments(char *arena, int arg[4], int op_idx, int pc)
     }
 }
 
-static int execute_inst(champion_t *champ, char *arena, code_t code, int op_idx)
+static int exec_inst(champion_t *champ, core_t *core, code_t code, int op_idx)
 {
     int args[4];
 
-    get_inst_arguments(arena, args, op_idx, champ->pc);
-    return op_tab[op_idx].inst(champ, arena, code, args);
+    get_inst_arguments(core->arena, args, op_idx, champ->pc);
+    return op_tab[op_idx].inst(champ, core, code, args);
 }
 
 static bool is_instruction_valid(champion_t *champ, char *arena, int op_idx)
@@ -75,50 +84,48 @@ static bool is_instruction_valid(champion_t *champ, char *arena, int op_idx)
     return true;
 }
 
-static void execute_champions_instruction(champion_t **champions, char *arena)
+static void execute_champions_instruction(core_t *core)
 {
     int op_idx;
     code_t code;
 
-    for (int i = 0; champions[i]; i++) {
-        if (champions[i]->freeze > 0)
+    for (int i = 0; core->champions[i]; i++) {
+        if (core->champions[i]->freeze > 0)
             continue;
-        op_idx = arena[PC] - 1;
-        if (!is_instruction_valid(champions[i], arena, op_idx)) {
+        op_idx = core->arena[PC] - 1;
+        if (!is_instruction_valid(core->champions[i], core->arena, op_idx)) {
             PC = (PC + 1) % MEM_SIZE;
             continue;
         }
-        code = get_param_code(champions[i], arena, op_idx);
-        printf("%d \t===> ", PC);
-        printf("Code: %s[%X] \t: ", op_tab[op_idx].mnemonique, op_idx + 1);
-        if (execute_inst(champions[i], arena, code, op_idx) == -1) {
+        code = get_param_code(core->champions[i], core->arena, op_idx);
+        // printf("%d \t===> ", PC);
+        // printf("Code: %s[%X] \t: ", op_tab[op_idx].mnemonique, op_idx + 1);
+        if (exec_inst(core->champions[i], core, code, op_idx) == -1) {
             PC = (PC + 1) % MEM_SIZE;
-            champions[i]->freeze = 1;
+            core->champions[i]->freeze = 1;
         } else {
             PC = (PC + count_inst_bytes(code, op_idx)) % MEM_SIZE;
-            champions[i]->freeze = op_tab[op_idx].nbr_cycles;
+            core->champions[i]->freeze = op_tab[op_idx].nbr_cycles;
         }
     }
 }
 
-int loop_corewar(champion_t **champions, int dump)
+int loop_corewar(core_t *core, int dump)
 {
-    char *arena = create_arena(champions);
-
-    if (!arena)
+    core->arena = create_arena(core->champions);
+    if (!core->arena)
         return 84;
-    while (!is_game_ended(champions)) {
+    while (!is_game_ended(core->champions)) {
         if (dump != -1 && !dump--) {
-            dump_arena(arena);
+            dump_arena(core->arena);
             break;
         }
-        execute_champions_instruction(champions, arena);
-        for (int i = 0; champions[i]; i++) {
-            --champions[i]->freeze;
-            --champions[i]->cycles_until_death; 
-        }
-        update_champions_live_status(champions);
+        execute_champions_instruction(core);
+        for (int i = 0; core->champions[i]; i++)
+            --core->champions[i]->freeze;
+        update_champions_live_status(core->champions);
     }
-    display_winning_champions(champions);
+    display_winning_champions(core->champions);
+    free(core->arena);
     return 0;
 }

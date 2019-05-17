@@ -38,6 +38,7 @@ enum parameter_types {
 };
 
 typedef struct champion champion_t;
+typedef struct core_s core_t;
 
 struct op_s {
     char *mnemonique;
@@ -45,7 +46,7 @@ struct op_s {
     args_type_t type[MAX_ARGS_NUMBER];
     char code;
     int nbr_cycles;
-    int (*inst)(champion_t *, char *, code_t, int *);
+    int (*inst)(champion_t *, core_t *, code_t, int *);
 };
 
 enum op_types {

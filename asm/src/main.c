@@ -67,7 +67,7 @@ static int build_binary_code(struct instruction **list, const char *file_name,
 int main(int argc, char const *argv[])
 {
     struct instruction **list;
-    header_t header = {htobe32(COREWAR_EXEC_MAGIC), {0}, 0, {0}};
+    header_t header = {0};
     char **file;
     int n_return = 0;
 

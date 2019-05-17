@@ -24,18 +24,6 @@ int read_header(header_t *header, const char *champ_path)
     return fd;
 }
 
-// champion_t *make_champion(void)
-// {
-//     champion_t *champ = malloc(sizeof(champion_t));
-
-//     if (!champ)
-//         return NULL;
-//     champ->pc = 0;
-//     champ->carry = 0;
-
-//     return champ;
-// }
-
 champion_t *create_champion(const char *champ_path)
 {
     header_t header = {0, {0}, 0, {0}};
@@ -51,7 +39,7 @@ champion_t *create_champion(const char *champ_path)
     champ->prog_size = be32toh(header.prog_size);
     for (size_t i = 0; i < REG_NUMBER; i++)
         champ->reg[i] = 0;
-    champ->cycles_until_death = CYCLE_TO_DIE;
+    champ->forked = false;
     champ->freeze = 0;
     champ->pc = 0;
     champ->carry = 0;

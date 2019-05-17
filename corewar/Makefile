@@ -44,19 +44,40 @@ TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 
 INIT_ARENA_PATH	=	init_arena/
 PARSING_PATH	=	parsing/
+INSTRUC_PATH	=	instruction/
 
-SRC	=	$(INIT_ARENA_PATH)check_overlap.c	\
-		$(INIT_ARENA_PATH)choose_adress_utils.c	\
-		$(INIT_ARENA_PATH)choose_adress.c	\
+SRC	=	$(INIT_ARENA_PATH)check_overlap.c \
+		$(INIT_ARENA_PATH)choose_adress_utils.c \
+		$(INIT_ARENA_PATH)choose_adress.c \
 		$(INIT_ARENA_PATH)create_arena.c \
 		$(INIT_ARENA_PATH)create_champion.c \
 		$(INIT_ARENA_PATH)init_champion_list.c \
 		$(INIT_ARENA_PATH)fill_adresses.c \
-		$(INIT_ARENA_PATH)sort_champions.c	\
+		$(INIT_ARENA_PATH)sort_champions.c \
 		$(PARSING_PATH)destroy_parsing.c \
 		$(PARSING_PATH)manage_parsing_fcts.c \
 		$(PARSING_PATH)parsing_globals.c \
 		$(PARSING_PATH)parsing.c \
+		$(INSTRUC_PATH)tools/get_first_two_bytes.c \
+		$(INSTRUC_PATH)tools/get_val.c \
+		$(INSTRUC_PATH)tools/is_reg.c \
+		$(INSTRUC_PATH)tools/refresh_carry.c \
+		$(INSTRUC_PATH)inst_add.c \
+		$(INSTRUC_PATH)inst_aff.c \
+		$(INSTRUC_PATH)inst_and.c \
+		$(INSTRUC_PATH)inst_fork.c \
+		$(INSTRUC_PATH)inst_ld.c \
+		$(INSTRUC_PATH)inst_ldi.c \
+		$(INSTRUC_PATH)inst_lfork.c \
+		$(INSTRUC_PATH)inst_live.c \
+		$(INSTRUC_PATH)inst_lld.c \
+		$(INSTRUC_PATH)inst_lldi.c \
+		$(INSTRUC_PATH)inst_or.c \
+		$(INSTRUC_PATH)inst_st.c \
+		$(INSTRUC_PATH)inst_sti.c \
+		$(INSTRUC_PATH)inst_sub.c \
+		$(INSTRUC_PATH)inst_xor.c \
+		$(INSTRUC_PATH)inst_zjmp.c \
 		check_param_bytecode.c \
 		corewar_loop.c \
 		count_inst_byte.c \
@@ -64,8 +85,11 @@ SRC	=	$(INIT_ARENA_PATH)check_overlap.c	\
 		destroy_champions.c \
 		dump_arena.c \
 		is_game_ended.c \
+		manage_champions_live.c \
 		op.c \
-		utils.c
+		read_arg.c \
+		utils.c \
+		write_arg.c
 
 SRC_LIB	=	stdio my string
 
