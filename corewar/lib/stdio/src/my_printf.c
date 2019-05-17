@@ -5,14 +5,23 @@
 ** Shitty but fast printf
 */
 
+#include <stdlib.h>
 #include <stdarg.h>
 #include "my.h"
 #include "my_stdio.h"
 
 static int print_flag(char mode, va_list list)
 {
-    if (mode == 'd')
-        return (my_putstr(my_itoa(va_arg(list, int))));
+    int n_val = 0;
+    char *str = NULL;
+
+    if (mode == 'd') {
+        str = my_itoa(va_arg(list, int));
+        n_val = my_putstr(str);
+        free(str);
+        str = NULL;
+        return (n_val);
+    }
     if (mode == 's')
         return (my_putstr(va_arg(list, char *)));
     if (mode == 'c')

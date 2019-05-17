@@ -14,6 +14,7 @@ static void destroy_corewar(champion_t **champions, parsing_t *parsing)
 {
     destroy_args(parsing);
     destroy_champions(champions);
+    free(champions);
 }
 
 static int init_corewar(champion_t **champions, parsing_t *parsing, int ac,
@@ -48,8 +49,7 @@ static int corewar_main(int ac, char const *argv[], core_t *core)
     if (init_corewar(core->champions, &parsing, ac, argv) == 84)
         return 84;
     loop_corewar(core, parsing.dump);
-    destroy_champions(core->champions);
-    destroy_args(&parsing);
+    destroy_corewar(core->champions, &parsing);
     return n_return;
 }
 
