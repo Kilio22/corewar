@@ -24,7 +24,7 @@ char const *av[])
         destroy_corewar(champions, parsing);
         return 84;
     }
-    if (init_champions(champions, parsing) ||
+    if (init_champions(champions, parsing) == 84 ||
 choose_adresses(champions) == 84) {
         destroy_corewar(champions, parsing);
         return 84;
@@ -44,11 +44,15 @@ static int corewar_main(int ac, char const *argv[], core_t *core)
     parsing_t parsing;
     int n_return = 0;
 
+    parsing.params = NULL;
     for (size_t i = 0; i < MAX_CHAMPIONS; i++)
         core->champions[i] = NULL;
     if (init_corewar(core->champions, &parsing, ac, argv) == 84)
         return 84;
-    loop_corewar(core, parsing.dump);
+    if (loop_corewar(core, parsing.dump) == 84) {
+        destroy_corewar(core->champions, &parsing);
+        return 84;
+    }
     destroy_corewar(core->champions, &parsing);
     return n_return;
 }

@@ -38,5 +38,7 @@ int inst_lfork(champion_t *champ, core_t *core, code_t desc UNU, int *args)
     while (new->pc < 0)
         new->pc += MEM_SIZE;
     core->champions = realloc_champions(core->champions, new);
+    if (!core->champions)
+        return -1;
     return 0;
 }

@@ -10,6 +10,8 @@
 
 void destroy_args(parsing_t *parsing)
 {
+    if (!parsing->params)
+        return;
     for (int i = 0; parsing->params[i]; i++) {
         free(parsing->params[i]->fp);
         free(parsing->params[i]);
