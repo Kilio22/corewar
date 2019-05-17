@@ -33,9 +33,8 @@ static int get_arg(char *arena, char type, int op_idx, int *offset)
     int arg = read_arg(arena, *offset, arg_len);
 
     *offset = (*offset + arg_len) % MEM_SIZE;
-    printf(" ");
-    print_binary(arg);
-    printf(" ");
+    // print_binary(arg);
+    // printf(" ");
     return arg;
 }
 
@@ -99,8 +98,8 @@ static void execute_champions_instruction(core_t *core)
             continue;
         }
         code = get_param_code(core->champions[i], core->arena, op_idx);
-        printf("%d \t===> ", PC);
-        printf("Code: %s[%X] \t: ", op_tab[op_idx].mnemonique, op_idx + 1);
+        // printf("%d \t===> ", PC);
+        // printf("Code: %s[%X] \t: ", op_tab[op_idx].mnemonique, op_idx + 1);
         if (exec_inst(core->champions[i], core, code, op_idx) == -1) {
             PC = (PC + 1) % MEM_SIZE;
             core->champions[i]->freeze = 1;

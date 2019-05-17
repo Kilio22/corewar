@@ -19,8 +19,8 @@ int check_flag(char const *str)
 
 champion_t **realloc_champions(champion_t **champions, champion_t *new)
 {
-    size_t len = my_arraylen((void **) champions) + 2;
-    champion_t **new_arr = malloc(sizeof(champion_t *) * len);
+    size_t len = my_arraylen((void **) champions);
+    champion_t **new_arr = malloc(sizeof(champion_t *) * (len + 2));
     size_t i = 0;
 
     if (!new_arr)

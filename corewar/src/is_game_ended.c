@@ -15,12 +15,10 @@ void display_winning_champions(champion_t **champions)
         my_printf("Nobody survived...\n");
         return;
     }
-    nb = get_champion_live(0);
-    for (int i = 1; champions[i]; i++) {
+    for (int i = 0; champions[i]; i++)
         if (champions[i]->forked == false &&
 get_champion_live(champions[i]->prog_id) > nb)
             nb = get_champion_live(champions[i]->prog_id);
-    }
     for (int i = 0; champions[i]; i++) {
         if (champions[i]->forked == false &&
 get_champion_live(champions[i]->prog_id) == nb)
