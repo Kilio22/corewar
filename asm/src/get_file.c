@@ -40,6 +40,7 @@ char **get_file(const char *fp, header_t *header)
         free(new);
         return NULL;
     }
+    header->magic = htobe32(COREWAR_EXEC_MAGIC);
     new[0] = NULL;
     if (get_header(stream, header) == -1) {
         fclose(stream);
