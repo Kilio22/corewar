@@ -7,17 +7,22 @@
 
 #include "corewar.h"
 
+static int more_overlap_conditions(champion_t **champions, int start, int j)
+{
+    if (start >= champions[j]->pc && start <= MEM_SIZE)
+        return 84;
+    else if (start >= 0 && start <= (champions[j]->pc + champions[j]->prog_size - MEM_SIZE))
+        return 84;
+    return 0;
+}
+
 static int overlap_conditions(champion_t **champions, int start, int j)
 {
     if (champions[j]->pc + champions[j]->prog_size > MEM_SIZE) {
-        if (start >= champions[j]->pc && start <= MEM_SIZE)
+        if (more_overlap_conditions(champions, start, j) == 84)
             return 84;
-        else if (start >= 0 && start <=
-(champions[j]->pc + champions[j]->prog_size - MEM_SIZE))
-            return 84;
-    }
-    else if (start >= champions[j]->pc && start <=
-(champions[j]->pc + champions[j]->prog_size))
+    } else if (start >= champions[j]->pc &&
+start <= (champions[j]->pc + champions[j]->prog_size))
         return 84;
     return 0;
 }

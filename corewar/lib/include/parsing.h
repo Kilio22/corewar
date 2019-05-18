@@ -31,6 +31,7 @@ int parse_args(int ac, char const *argv[], parsing_t *parsing);
 void destroy_args(parsing_t *parsing);
 
 extern const char *flags[];
-extern int (* const tab_ftcs[])(size_t *, char const **, parsing_t *, int *);
+typedef int (* const parsing_functions_t)(size_t *, char const **, parsing_t *, int *);
+extern parsing_functions_t tab_ftcs[];
 
 #endif /* !PARSING_H_ */
