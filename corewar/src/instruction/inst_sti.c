@@ -9,7 +9,6 @@
 
 int inst_sti(champion_t *champ, core_t *core, code_t desc, int *args)
 {
-    // debug(champ, core, desc, args);
     int sum;
     int pos;
 

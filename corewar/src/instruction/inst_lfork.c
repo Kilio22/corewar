@@ -29,7 +29,6 @@ static champion_t *dup_champion(champion_t *origin)
 
 int inst_lfork(champion_t *champ, core_t *core, code_t desc UNU, int *args)
 {
-    // debug(champ, core, desc, args);
     champion_t *new = dup_champion(champ);
 
     if (!new)

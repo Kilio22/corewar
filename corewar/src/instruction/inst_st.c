@@ -9,7 +9,6 @@
 
 int inst_st(champion_t *champ, core_t *core, code_t desc, int *args)
 {
-    // debug(champ, core, desc, args);
     if (is_reg(desc, args, 2) == -1)
         return -1;
     if (ARG_TYPE(1) == REG)

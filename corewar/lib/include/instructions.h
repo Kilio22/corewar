@@ -25,7 +25,7 @@ void refresh_carry(champion_t *champ, int value);
 int get_val(champion_t *champ, char *arena, code_t desc, int val);
 int get_long_val(champion_t *champ, char *arena, code_t desc, int val);
 int is_reg(code_t desc, int *args, int nb_arg);
-int get_first_two_bytes(int val);;
+int get_first_two_bytes(int val);
 
 #define UNU __attribute__((unused))
 int inst_live(champion_t *champ, core_t *core, code_t desc, int *args);

@@ -14,5 +14,5 @@ const char *flags[] = {
 };
 
 int (* const tab_ftcs[])(size_t *, char const **, parsing_t *, int *) = {
-        manage_dump, manage_nb, manage_adress
+    manage_dump, manage_nb, manage_adress
 };

@@ -9,60 +9,11 @@
 #include <stdlib.h>
 #include "corewar.h"
 
-bool op_needs_args(int op_idx)
-{
-    if (op_idx == OP_LIVE || op_idx == OP_ZJMP)
-        return false;
-    if (op_idx == OP_FORK || op_idx == OP_LFORK)
-        return false;
-    return true;
-}
-
-void print_binary(int nb)
-{
-    for (int i = 31; i >= 0; i--) {
-        printf("%d", (nb >> i) & 0b1);
-        if (!(i % 8))
-            printf(" ");
-    }
-}
-
-static int get_arg(char *arena, char type, int op_idx, int *offset)
-{
-    int arg_len = get_arg_length(type, op_idx);
-    int arg = read_arg(arena, *offset, arg_len);
-
-    *offset = (*offset + arg_len) % MEM_SIZE;
-    // print_binary(arg);
-    // printf(" ");
-    return arg;
-}
-
 static code_t get_param_code(champion_t *champ, char *arena, int op_idx)
 {
     if (!op_needs_args(op_idx))
         return 0;
     return arena[(champ->pc + 1) % MEM_SIZE];
-}
-
-static void get_inst_arguments(char *arena, int arg[4], int op_idx, int pc)
-{
-    code_t code = arena[(pc + 1) % MEM_SIZE];
-    char type = 0;
-    int offset = (pc + 2) % MEM_SIZE;
-
-    if (!op_needs_args(op_idx)) {
-        if (--offset < 0)
-            offset += MEM_SIZE;
-        arg[0] = get_arg(arena, op_idx == OP_LIVE ? 0b10 : 0b11, op_idx,
-&offset);
-        return;
-    }
-    for (int i = 0; i < op_tab[op_idx].nbr_args; i++) {
-        type = (code & 0b11000000) >> 6;
-        arg[i] = get_arg(arena, type, op_idx, &offset);
-        code <<= 2;
-    }
 }
 
 static int exec_inst(champion_t *champ, core_t *core, code_t code, int op_idx)
@@ -98,8 +49,6 @@ static void execute_champions_instruction(core_t *core)
             continue;
         }
         code = get_param_code(core->champions[i], core->arena, op_idx);
-        // printf("%d \t===> ", PC);
-        // printf("Code: %s[%X] \t: ", op_tab[op_idx].mnemonique, op_idx + 1);
         if (exec_inst(core->champions[i], core, code, op_idx) == -1) {
             PC = (PC + 1) % MEM_SIZE;
             core->champions[i]->freeze = 1;

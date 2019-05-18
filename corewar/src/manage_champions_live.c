@@ -22,7 +22,6 @@ CYCLE_TO_DIE, CYCLE_TO_DIE};
     lives[1] = lives[1] >= 0 ? lives[1] - 1 : -1;
     lives[2] = lives[2] >= 0 ? lives[2] - 1 : -1;
     lives[3] = lives[3] >= 0 ? lives[3] - 1 : -1;
-    // printf("%d %d %d %d\n", lives[0], lives[1], lives[2], lives[3]);
     return 0;
 }
 

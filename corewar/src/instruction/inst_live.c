@@ -20,7 +20,6 @@ core->champions[i]->forked == false)
 
 int inst_live(champion_t *c UNU, core_t *core, code_t desc UNU, int *args)
 {
-    // debug(c, core, desc, args);
     static int call_count = 0;
     static int cycles_to_die = CYCLE_TO_DIE;
     int index;

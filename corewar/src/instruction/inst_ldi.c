@@ -12,7 +12,6 @@ int inst_ldi(champion_t *champ, core_t *core, code_t desc, int *args)
     int sum;
     int pos;
 
-    // debug(champ, core, desc, args);
     if (is_reg(desc, args, 3) == -1)
         return -1;
     sum = GET_VAL(0);
