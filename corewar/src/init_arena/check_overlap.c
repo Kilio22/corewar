@@ -11,7 +11,8 @@ static int more_overlap_conditions(champion_t **champions, int start, int j)
 {
     if (start >= champions[j]->pc && start <= MEM_SIZE)
         return 84;
-    else if (start >= 0 && start <= (champions[j]->pc + champions[j]->prog_size - MEM_SIZE))
+    else if (start >= 0 &&
+start <= (champions[j]->pc + champions[j]->prog_size - MEM_SIZE))
         return 84;
     return 0;
 }
