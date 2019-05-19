@@ -29,7 +29,7 @@ int inst_live(champion_t *c UNU, core_t *core, code_t desc UNU, int *args)
         return 0;
     index = find_champion_index(core, args[0]);
     if (index != -1 && get_champion_live(args[0]) > 0)
-        my_printf("Le joueur %d (%s) est en vie.\n",
+        my_printf("The player %d (%s) is alive.\n",
 core->champions[index]->prog_id, core->champions[index]->prog_name);
     if (call_count >= NBR_LIVE) {
         cycles_to_die -= CYCLE_DELTA;
