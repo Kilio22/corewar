@@ -23,7 +23,7 @@ static int overlap_conditions(champion_t **champions, int start, int j)
         if (more_overlap_conditions(champions, start, j) == 84)
             return 84;
     } else if (start >= champions[j]->pc &&
-start <= (champions[j]->pc + champions[j]->prog_size))
+start < (champions[j]->pc + champions[j]->prog_size))
         return 84;
     return 0;
 }
