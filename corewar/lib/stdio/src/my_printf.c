@@ -19,7 +19,6 @@ static int print_flag(char mode, va_list list)
         str = my_itoa(va_arg(list, int));
         n_val = my_putstr(str);
         free(str);
-        str = NULL;
         return (n_val);
     }
     if (mode == 's')

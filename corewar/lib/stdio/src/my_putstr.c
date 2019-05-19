@@ -13,6 +13,8 @@ size_t my_putstr(const char *s)
 {
     size_t len = my_strlen(s);
 
+    if (!s)
+        return -1;
     write(1, s, len);
     return (len);
 }

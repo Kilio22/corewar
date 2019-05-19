@@ -12,7 +12,7 @@ void display_winning_champions(champion_t **champions)
     int nb = 0;
 
     if (!*champions) {
-        my_printf("Nobody survived...\n");
+        my_puts("Nobody survived...");
         return;
     }
     for (int i = 0; champions[i]; i++)
