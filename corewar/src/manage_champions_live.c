@@ -15,7 +15,8 @@ CYCLE_TO_DIE, CYCLE_TO_DIE};
     if (flag == -2)
         return lives[index - 1];
     if (flag != -1) {
-        lives[index - 1] = flag;
+        if (lives[index - 1] < flag)
+            lives[index - 1] = flag;
         return 0;
     }
     lives[0] = lives[0] >= 0 ? lives[0] - 1 : -1;
