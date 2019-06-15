@@ -44,6 +44,5 @@ For more informations, please read the **Subject.pdf**.
     - Conditionnal jumps : nzjmp, ejmp, nejmp, nlejmp, nljmp, gjmp, gejmp, ngejmp, ngjmp, ljmp --> Depending of the carry value, it jumps to the value (champ_pc + (arg % IDX_MOD) - 3) % MEM_SIZE, where arg is the argument given as parameter to the instruction.
     
 # How does it looks like ?
-https://github.com/Kilio22/Corewar/blob/master/fig1.png?raw=true
 ![alt text](https://github.com/Kilio22/Corewar/blob/master/fig1.png?raw=true)
 ![alt text](https://github.com/Kilio22/Corewar/blob/master/fig2.png?raw=true)
