@@ -25,6 +25,7 @@ execute several programs at once...
 They are written in the assembly language specific to our virtual machine (described further on).
 
 This project is one of the most important during first year at Epitech, done in 2 weeks.
+For more informations, please read the **Subject.pdf**.
 
 # How to use it ?
 - **The assembler:** The assembler need a file given as parameter with valid instructions. It will therefore compile this file to a .cor file which can be used with the Virtual Machine.
@@ -41,3 +42,7 @@ This project is one of the most important during first year at Epitech, done in 
     - Pop: Reproduce the behavior of the Pop instruction used by the processor.
     - cmp : Compare the 2 values given as parameters, update the carry.
     - Conditionnal jumps : nzjmp, ejmp, nejmp, nlejmp, nljmp, gjmp, gejmp, ngejmp, ngjmp, ljmp --> Depending of the carry value, it jumps to the value (champ_pc + (arg % IDX_MOD) - 3) % MEM_SIZE, where arg is the argument given as parameter to the instruction.
+    
+# How does it looks like ?
+![alt text](https://github.com/Kilio22/Corewar/blob/master/fig1.png?raw=true)
+![alt text](https://github.com/Kilio22/Corewar/blob/master/fig2.png?raw=true)
