@@ -30,7 +30,7 @@ For more informations, please read the **Subject.pdf**.
 # How to use it ?
 - **The assembler:** The assembler need a file given as parameter with valid instructions. It will therefore compile this file to a .cor file which can be used with the Virtual Machine.
   To create a valid file, see the subject.pdf.
-- **The Virtual machine:** The virtual machine need at list two champions compiled previously with the asm. The program will after that put the champions into the same arena, and execute the instructions of each champions.
+- **The Virtual machine:** The virtual machine need at list two champions previously compiled with the asm. The program will after that put the champions into the same arena, and execute the instructions of each champions.
 
 # Bonus
 - **Decompiler:** You can find in the asm/bonus directory a file decompilos.tar, which is a program able to convert a .cor file, to a .s file.
